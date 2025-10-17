@@ -306,6 +306,43 @@ router.patch("/bars/:id/reject", authenticateAdmin, async (req, res) => {
   }
 });
 
+// PUT /api/admin/bars/:id - Update a bar (name, price, location)
+router.put("/bars/:id", authenticateAdmin, async (req, res) => {
+  try {
+    const { id } = req.params;
+    const { name, latitude, longitude, regularPrice } = req.body;
+
+    // Validate required fields
+    if (!name || !latitude || !longitude || !regularPrice) {
+      return res.status(400).json({ error: "All fields are required" });
+    }
+
+    // Validate price
+    const price = parseFloat(regularPrice);
+    if (isNaN(price) || price <= 0) {
+      return res.status(400).json({ error: "Invalid price" });
+    }
+
+    // Validate coordinates
+    const lat = parseFloat(latitude);
+    const lng = parseFloat(longitude);
+    if (isNaN(lat) || isNaN(lng) || lat < -90 || lat > 90 || lng < -180 || lng > 180) {
+      return res.status(400).json({ error: "Invalid coordinates" });
+    }
+
+    // Update bar
+    await db.run(
+      "UPDATE bars SET name = ?, latitude = ?, longitude = ?, regularPrice = ? WHERE id = ?",
+      [name.trim(), lat, lng, price, id]
+    );
+
+    res.json({ message: "Bar updated successfully" });
+  } catch (error) {
+    console.error("Error updating bar:", error);
+    res.status(500).json({ error: "Failed to update bar" });
+  }
+});
+
 // DELETE /api/admin/bars/:id - Delete a bar
 router.delete("/bars/:id", authenticateAdmin, async (req, res) => {
   try {
