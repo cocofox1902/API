@@ -17,7 +17,9 @@ async function initDatabase() {
         "✅ Default admin user created (username: admin, password: admin)"
       );
     } catch (err) {
-      if (err.message.includes("UNIQUE")) {
+      // PostgreSQL error code 23505 = unique constraint violation
+      // SQLite error message includes "UNIQUE"
+      if (err.code === "23505" || err.message.includes("UNIQUE")) {
         console.log("ℹ️  Admin user already exists");
       } else {
         throw err;
