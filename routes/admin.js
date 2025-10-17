@@ -2,10 +2,12 @@ const express = require("express");
 const router = express.Router();
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
+const speakeasy = require("speakeasy");
+const qrcode = require("qrcode");
 const db = require("../config/database");
 const { authenticateAdmin } = require("../middleware/auth");
 
-// POST /api/admin/login - Admin login
+// POST /api/admin/login - Admin login (Step 1: Username/Password)
 router.post("/login", async (req, res) => {
   try {
     const { username, password } = req.body;
@@ -28,6 +30,23 @@ router.post("/login", async (req, res) => {
       return res.status(401).json({ error: "Invalid credentials" });
     }
 
+    // Check if 2FA is enabled
+    if (admin.twofactorenabled) {
+      // Return temporary token for 2FA verification
+      const tempToken = jwt.sign(
+        { id: admin.id, temp: true },
+        process.env.JWT_SECRET,
+        { expiresIn: "5m" }
+      );
+
+      return res.json({
+        requiresTwoFactor: true,
+        tempToken,
+        message: "Please enter your 2FA code",
+      });
+    }
+
+    // If 2FA not enabled, return full token
     const token = jwt.sign(
       { id: admin.id, username: admin.username },
       process.env.JWT_SECRET,
@@ -37,10 +56,203 @@ router.post("/login", async (req, res) => {
     res.json({
       token,
       username: admin.username,
+      requiresTwoFactor: false,
     });
   } catch (error) {
     console.error("Login error:", error);
     res.status(500).json({ error: "Login failed" });
+  }
+});
+
+// POST /api/admin/verify-2fa - Verify 2FA code (Step 2)
+router.post("/verify-2fa", async (req, res) => {
+  try {
+    const { tempToken, code } = req.body;
+
+    if (!tempToken || !code) {
+      return res.status(400).json({ error: "Token and code required" });
+    }
+
+    // Verify temp token
+    let decoded;
+    try {
+      decoded = jwt.verify(tempToken, process.env.JWT_SECRET);
+      if (!decoded.temp) {
+        return res.status(401).json({ error: "Invalid token" });
+      }
+    } catch (err) {
+      return res.status(401).json({ error: "Token expired or invalid" });
+    }
+
+    // Get admin
+    const admin = await db.get("SELECT * FROM admin_users WHERE id = ?", [
+      decoded.id,
+    ]);
+
+    if (!admin || !admin.twofactorsecret) {
+      return res.status(401).json({ error: "2FA not configured" });
+    }
+
+    // Verify 2FA code
+    const verified = speakeasy.totp.verify({
+      secret: admin.twofactorsecret,
+      encoding: "base32",
+      token: code,
+      window: 2, // Allow 2 time steps before/after
+    });
+
+    if (!verified) {
+      return res.status(401).json({ error: "Invalid 2FA code" });
+    }
+
+    // Generate full access token
+    const token = jwt.sign(
+      { id: admin.id, username: admin.username },
+      process.env.JWT_SECRET,
+      { expiresIn: "24h" }
+    );
+
+    res.json({
+      token,
+      username: admin.username,
+      message: "2FA verified successfully",
+    });
+  } catch (error) {
+    console.error("2FA verification error:", error);
+    res.status(500).json({ error: "2FA verification failed" });
+  }
+});
+
+// POST /api/admin/setup-2fa - Generate 2FA secret and QR code
+router.post("/setup-2fa", authenticateAdmin, async (req, res) => {
+  try {
+    const adminId = req.admin.id;
+
+    // Generate secret
+    const secret = speakeasy.generateSecret({
+      name: `BudBeer Admin (${req.admin.username})`,
+      issuer: "BudBeer",
+    });
+
+    // Generate QR code
+    const qrCodeUrl = await qrcode.toDataURL(secret.otpauth_url);
+
+    // Save secret to database (not enabled yet)
+    await db.run("UPDATE admin_users SET twoFactorSecret = ? WHERE id = ?", [
+      secret.base32,
+      adminId,
+    ]);
+
+    res.json({
+      secret: secret.base32,
+      qrCode: qrCodeUrl,
+      message: "Scan QR code with Google Authenticator",
+    });
+  } catch (error) {
+    console.error("2FA setup error:", error);
+    res.status(500).json({ error: "2FA setup failed" });
+  }
+});
+
+// POST /api/admin/enable-2fa - Enable 2FA after verification
+router.post("/enable-2fa", authenticateAdmin, async (req, res) => {
+  try {
+    const { code } = req.body;
+    const adminId = req.admin.id;
+
+    if (!code) {
+      return res.status(400).json({ error: "Verification code required" });
+    }
+
+    // Get admin with secret
+    const admin = await db.get("SELECT * FROM admin_users WHERE id = ?", [
+      adminId,
+    ]);
+
+    if (!admin.twofactorsecret) {
+      return res
+        .status(400)
+        .json({ error: "2FA not set up. Run /setup-2fa first" });
+    }
+
+    // Verify code
+    const verified = speakeasy.totp.verify({
+      secret: admin.twofactorsecret,
+      encoding: "base32",
+      token: code,
+      window: 2,
+    });
+
+    if (!verified) {
+      return res.status(401).json({ error: "Invalid verification code" });
+    }
+
+    // Enable 2FA
+    await db.run("UPDATE admin_users SET twoFactorEnabled = ? WHERE id = ?", [
+      true,
+      adminId,
+    ]);
+
+    res.json({
+      message: "2FA enabled successfully",
+      enabled: true,
+    });
+  } catch (error) {
+    console.error("2FA enable error:", error);
+    res.status(500).json({ error: "Failed to enable 2FA" });
+  }
+});
+
+// POST /api/admin/disable-2fa - Disable 2FA
+router.post("/disable-2fa", authenticateAdmin, async (req, res) => {
+  try {
+    const { password } = req.body;
+    const adminId = req.admin.id;
+
+    if (!password) {
+      return res.status(400).json({ error: "Password required" });
+    }
+
+    // Verify password
+    const admin = await db.get("SELECT * FROM admin_users WHERE id = ?", [
+      adminId,
+    ]);
+
+    const validPassword = await bcrypt.compare(password, admin.password);
+    if (!validPassword) {
+      return res.status(401).json({ error: "Invalid password" });
+    }
+
+    // Disable 2FA
+    await db.run(
+      "UPDATE admin_users SET twoFactorEnabled = ?, twoFactorSecret = ? WHERE id = ?",
+      [false, null, adminId]
+    );
+
+    res.json({
+      message: "2FA disabled successfully",
+      enabled: false,
+    });
+  } catch (error) {
+    console.error("2FA disable error:", error);
+    res.status(500).json({ error: "Failed to disable 2FA" });
+  }
+});
+
+// GET /api/admin/2fa-status - Check if 2FA is enabled
+router.get("/2fa-status", authenticateAdmin, async (req, res) => {
+  try {
+    const admin = await db.get(
+      "SELECT twoFactorEnabled FROM admin_users WHERE id = ?",
+      [req.admin.id]
+    );
+
+    res.json({
+      enabled: admin.twofactorenabled || false,
+    });
+  } catch (error) {
+    console.error("2FA status error:", error);
+    res.status(500).json({ error: "Failed to fetch 2FA status" });
   }
 });
 

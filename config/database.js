@@ -61,6 +61,8 @@ class Database {
           id SERIAL PRIMARY KEY,
           username TEXT UNIQUE NOT NULL,
           password TEXT NOT NULL,
+          twoFactorSecret TEXT,
+          twoFactorEnabled BOOLEAN DEFAULT FALSE,
           createdAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP
         )
       `);
@@ -133,4 +135,3 @@ class Database {
 }
 
 module.exports = new Database();
-
