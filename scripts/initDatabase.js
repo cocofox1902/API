@@ -5,6 +5,28 @@ async function initDatabase() {
   try {
     console.log("Initializing database...");
 
+    // Migrate 2FA columns if they don't exist
+    console.log("🔄 Checking 2FA migration...");
+    try {
+      await db.run(`
+        ALTER TABLE admin_users 
+        ADD COLUMN IF NOT EXISTS twoFactorSecret TEXT
+      `);
+      console.log("✅ twoFactorSecret column ensured");
+    } catch (err) {
+      console.log("ℹ️  twoFactorSecret column already exists or error:", err.message);
+    }
+
+    try {
+      await db.run(`
+        ALTER TABLE admin_users 
+        ADD COLUMN IF NOT EXISTS twoFactorEnabled BOOLEAN DEFAULT FALSE
+      `);
+      console.log("✅ twoFactorEnabled column ensured");
+    } catch (err) {
+      console.log("ℹ️  twoFactorEnabled column already exists or error:", err.message);
+    }
+
     // Create default admin user (username: admin, password: admin)
     const hashedPassword = await bcrypt.hash("admin", 10);
 
