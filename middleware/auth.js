@@ -11,8 +11,13 @@ const authenticateAdmin = (req, res, next) => {
     const token = authHeader.substring(7);
     const decoded = jwt.verify(token, process.env.JWT_SECRET);
 
+    // Support both formats for backward compatibility
     req.adminId = decoded.id;
     req.adminUsername = decoded.username;
+    req.admin = {
+      id: decoded.id,
+      username: decoded.username,
+    };
     next();
   } catch (error) {
     return res.status(401).json({ error: "Invalid or expired token" });

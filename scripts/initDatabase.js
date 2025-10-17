@@ -14,7 +14,10 @@ async function initDatabase() {
       `);
       console.log("✅ twoFactorSecret column ensured");
     } catch (err) {
-      console.log("ℹ️  twoFactorSecret column already exists or error:", err.message);
+      console.log(
+        "ℹ️  twoFactorSecret column already exists or error:",
+        err.message
+      );
     }
 
     try {
@@ -24,7 +27,10 @@ async function initDatabase() {
       `);
       console.log("✅ twoFactorEnabled column ensured");
     } catch (err) {
-      console.log("ℹ️  twoFactorEnabled column already exists or error:", err.message);
+      console.log(
+        "ℹ️  twoFactorEnabled column already exists or error:",
+        err.message
+      );
     }
 
     // Create default admin user (username: admin, password: admin)
