@@ -326,7 +326,14 @@ router.put("/bars/:id", authenticateAdmin, async (req, res) => {
     // Validate coordinates
     const lat = parseFloat(latitude);
     const lng = parseFloat(longitude);
-    if (isNaN(lat) || isNaN(lng) || lat < -90 || lat > 90 || lng < -180 || lng > 180) {
+    if (
+      isNaN(lat) ||
+      isNaN(lng) ||
+      lat < -90 ||
+      lat > 90 ||
+      lng < -180 ||
+      lng > 180
+    ) {
       return res.status(400).json({ error: "Invalid coordinates" });
     }
 
@@ -421,16 +428,80 @@ router.get("/stats", authenticateAdmin, async (req, res) => {
       ["rejected"]
     );
     const bannedIPs = await db.get("SELECT COUNT(*) as count FROM banned_ips");
+    const reports = await db.get(
+      "SELECT COUNT(*) as count FROM reports WHERE status = ?",
+      ["pending"]
+    );
 
     res.json({
       pending: pending.count,
       approved: approved.count,
       rejected: rejected.count,
       bannedIPs: bannedIPs.count,
+      reports: reports.count,
     });
   } catch (error) {
     console.error("Error fetching stats:", error);
     res.status(500).json({ error: "Failed to fetch stats" });
+  }
+});
+
+// GET /api/admin/reports - Get all reports
+router.get("/reports", authenticateAdmin, async (req, res) => {
+  try {
+    const { status } = req.query;
+    let reports;
+
+    if (status) {
+      reports = await db.all(
+        `SELECT reports.*, bars.name as barName, bars.latitude, bars.longitude 
+         FROM reports 
+         JOIN bars ON reports.barId = bars.id 
+         WHERE reports.status = ? 
+         ORDER BY reports.reportedAt DESC`,
+        [status]
+      );
+    } else {
+      reports = await db.all(
+        `SELECT reports.*, bars.name as barName, bars.latitude, bars.longitude 
+         FROM reports 
+         JOIN bars ON reports.barId = bars.id 
+         ORDER BY reports.reportedAt DESC`
+      );
+    }
+
+    res.json(reports);
+  } catch (error) {
+    console.error("Error fetching reports:", error);
+    res.status(500).json({ error: "Failed to fetch reports" });
+  }
+});
+
+// PATCH /api/admin/reports/:id/resolve - Mark report as resolved
+router.patch("/reports/:id/resolve", authenticateAdmin, async (req, res) => {
+  try {
+    const { id } = req.params;
+
+    await db.run("UPDATE reports SET status = ? WHERE id = ?", ["resolved", id]);
+
+    res.json({ message: "Report resolved successfully" });
+  } catch (error) {
+    console.error("Error resolving report:", error);
+    res.status(500).json({ error: "Failed to resolve report" });
+  }
+});
+
+// DELETE /api/admin/reports/:id - Delete a report
+router.delete("/reports/:id", authenticateAdmin, async (req, res) => {
+  try {
+    const { id } = req.params;
+
+    await db.run("DELETE FROM reports WHERE id = ?", [id]);
+
+    res.json({ message: "Report deleted successfully" });
+  } catch (error) {
+    console.error("Error deleting report:", error);
+    res.status(500).json({ error: "Failed to delete report" });
   }
 });
 

@@ -76,6 +76,19 @@ class Database {
         )
       `);
 
+      // Reports table
+      await client.query(`
+        CREATE TABLE IF NOT EXISTS reports (
+          id SERIAL PRIMARY KEY,
+          barId INTEGER NOT NULL,
+          reason TEXT NOT NULL,
+          reportedByIP TEXT,
+          reportedAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+          status TEXT DEFAULT 'pending' CHECK(status IN ('pending', 'reviewed', 'resolved')),
+          FOREIGN KEY (barId) REFERENCES bars(id) ON DELETE CASCADE
+        )
+      `);
+
       console.log("Database tables initialized");
     } catch (err) {
       console.error("Error initializing tables:", err);
