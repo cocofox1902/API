@@ -19,7 +19,7 @@ router.get("/", async (req, res) => {
 // POST /api/bars - Submit a new bar (with rate limiting and IP ban check)
 router.post("/", checkBannedIP, rateLimiter, async (req, res) => {
   try {
-    const { name, latitude, longitude, regularPrice } = req.body;
+    const { name, latitude, longitude, regularPrice, deviceId } = req.body;
 
     // Validation
     if (!name || !latitude || !longitude || !regularPrice) {
@@ -39,20 +39,21 @@ router.post("/", checkBannedIP, rateLimiter, async (req, res) => {
       });
     }
 
-    const ip = req.ip || req.connection.remoteAddress;
+    const ip = req.clientIp || req.ip;
+    req.deviceId = deviceId;
 
     const result = await db.run(
-      "INSERT INTO bars (name, latitude, longitude, regularPrice, submittedByIP) VALUES (?, ?, ?, ?, ?)",
-      [name, latitude, longitude, regularPrice, ip]
+      "INSERT INTO bars (name, latitude, longitude, regularPrice, status, submittedByIP, deviceId) VALUES (?, ?, ?, ?, ?, ?, ?) RETURNING id",
+      [name, latitude, longitude, regularPrice, "pending", ip, deviceId || null]
     );
 
     res.status(201).json({
-      message: "Bar submitted successfully and is pending approval",
+      message: "Bar submitted successfully",
       id: result.id,
     });
   } catch (error) {
     console.error("Error creating bar:", error);
-    res.status(500).json({ error: "Failed to create bar" });
+    res.status(500).json({ error: "Failed to submit bar" });
   }
 });
 
@@ -60,7 +61,7 @@ router.post("/", checkBannedIP, rateLimiter, async (req, res) => {
 router.post("/:id/report", checkBannedIP, rateLimiter, async (req, res) => {
   try {
     const { id } = req.params;
-    const { reason } = req.body;
+    const { reason, deviceId } = req.body;
 
     // Validation
     if (!reason || reason.trim().length === 0) {
@@ -68,7 +69,9 @@ router.post("/:id/report", checkBannedIP, rateLimiter, async (req, res) => {
     }
 
     if (reason.length > 500) {
-      return res.status(400).json({ error: "Reason is too long (max 500 characters)" });
+      return res
+        .status(400)
+        .json({ error: "Reason is too long (max 500 characters)" });
     }
 
     // Check if bar exists
@@ -77,12 +80,13 @@ router.post("/:id/report", checkBannedIP, rateLimiter, async (req, res) => {
       return res.status(404).json({ error: "Bar not found" });
     }
 
-    const ip = req.ip || req.connection.remoteAddress;
+    const ip = req.clientIp || req.ip;
+    req.deviceId = deviceId;
 
     // Insert report
     const result = await db.run(
-      "INSERT INTO reports (barId, reason, reportedByIP) VALUES (?, ?, ?)",
-      [id, reason.trim(), ip]
+      "INSERT INTO reports (barId, reason, reportedByIP, deviceId) VALUES (?, ?, ?, ?) RETURNING id",
+      [id, reason.trim(), ip, deviceId || null]
     );
 
     res.status(201).json({

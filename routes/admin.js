@@ -364,37 +364,49 @@ router.delete("/bars/:id", authenticateAdmin, async (req, res) => {
   }
 });
 
-// GET /api/admin/banned-ips - Get all banned IPs
-router.get("/banned-ips", authenticateAdmin, async (req, res) => {
+// GET /api/admin/banned - Get all banned IPs
+router.get("/banned", authenticateAdmin, async (req, res) => {
   try {
-    const bannedIPs = await db.all(
-      "SELECT * FROM banned_ips ORDER BY bannedAt DESC"
+    const banned = await db.all(
+      "SELECT id, ip, deviceId, reason, bannedAt FROM banned_ips ORDER BY bannedAt DESC"
     );
-    res.json(bannedIPs);
+    res.json(banned);
   } catch (error) {
-    console.error("Error fetching banned IPs:", error);
-    res.status(500).json({ error: "Failed to fetch banned IPs" });
+    console.error("Error fetching banned entities:", error);
+    res.status(500).json({ error: "Failed to fetch banned entities" });
   }
 });
 
 // POST /api/admin/banned-ips - Ban an IP
-router.post("/banned-ips", authenticateAdmin, async (req, res) => {
+router.post("/ban", authenticateAdmin, async (req, res) => {
   try {
-    const { ip, reason } = req.body;
+    const { ip, deviceId, reason } = req.body;
 
-    if (!ip) {
-      return res.status(400).json({ error: "IP address required" });
+    if (!ip && !deviceId) {
+      return res.status(400).json({ error: "IP or deviceId is required" });
     }
 
-    await db.run("INSERT INTO banned_ips (ip, reason) VALUES (?, ?)", [
-      ip,
-      reason || "No reason provided",
-    ]);
+    await db.run(
+      "INSERT INTO banned_ips (ip, deviceId, reason) VALUES (?, ?, ?)",
+      [ip || null, deviceId || null, reason || ""]
+    );
 
-    res.json({ message: "IP banned successfully" });
+    res.status(201).json({ message: "Entity banned successfully" });
   } catch (error) {
-    console.error("Error banning IP:", error);
-    res.status(500).json({ error: "Failed to ban IP" });
+    console.error("Error banning entity:", error);
+    res.status(500).json({ error: "Failed to ban entity" });
+  }
+});
+
+// DELETE /api/admin/banned/:id - Unban an IP by ID
+router.delete("/banned/:id", authenticateAdmin, async (req, res) => {
+  try {
+    const { id } = req.params;
+    await db.run("DELETE FROM banned_ips WHERE id = ?", [id]);
+    res.json({ message: "Entity unbanned successfully" });
+  } catch (error) {
+    console.error("Error unbanning entity:", error);
+    res.status(500).json({ error: "Failed to unban entity" });
   }
 });
 
@@ -427,18 +439,32 @@ router.get("/stats", authenticateAdmin, async (req, res) => {
       "SELECT COUNT(*) as count FROM bars WHERE status = ?",
       ["rejected"]
     );
+    const totalBars = await db.get("SELECT COUNT(*) as count FROM bars");
+    const barsThisWeek = await db.get(
+      "SELECT COUNT(*) as count FROM bars WHERE createdAt >= NOW() - INTERVAL '7 days'"
+    );
     const bannedIPs = await db.get("SELECT COUNT(*) as count FROM banned_ips");
     const reports = await db.get(
       "SELECT COUNT(*) as count FROM reports WHERE status = ?",
       ["pending"]
     );
+    const activeDevices = await db.get(`
+      SELECT COUNT(*) as count FROM (
+        SELECT deviceId FROM bars WHERE deviceId IS NOT NULL
+        UNION
+        SELECT deviceId FROM reports WHERE deviceId IS NOT NULL
+      ) as devices
+    `);
 
     res.json({
-      pending: pending.count,
-      approved: approved.count,
-      rejected: rejected.count,
-      bannedIPs: bannedIPs.count,
-      reports: reports.count,
+      pending: Number(pending.count) || 0,
+      approved: Number(approved.count) || 0,
+      rejected: Number(rejected.count) || 0,
+      totalBars: Number(totalBars.count) || 0,
+      barsThisWeek: Number(barsThisWeek.count) || 0,
+      bannedIPs: Number(bannedIPs.count) || 0,
+      reports: Number(reports.count) || 0,
+      activeDevices: Number(activeDevices.count) || 0,
     });
   } catch (error) {
     console.error("Error fetching stats:", error);
@@ -482,7 +508,10 @@ router.patch("/reports/:id/resolve", authenticateAdmin, async (req, res) => {
   try {
     const { id } = req.params;
 
-    await db.run("UPDATE reports SET status = ? WHERE id = ?", ["resolved", id]);
+    await db.run("UPDATE reports SET status = ? WHERE id = ?", [
+      "resolved",
+      id,
+    ]);
 
     res.json({ message: "Report resolved successfully" });
   } catch (error) {

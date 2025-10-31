@@ -40,16 +40,22 @@ class Database {
           latitude REAL NOT NULL,
           longitude REAL NOT NULL,
           regularPrice REAL NOT NULL,
+          happyHourPrice REAL,
+          happyHourStart TEXT,
+          happyHourEnd TEXT,
           status TEXT DEFAULT 'pending' CHECK(status IN ('pending', 'approved', 'rejected')),
-          submittedAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-          submittedByIP TEXT
+          submittedByIP TEXT,
+          deviceId TEXT,
+          createdAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP
         )
       `);
 
       // Banned IPs table
       await client.query(`
         CREATE TABLE IF NOT EXISTS banned_ips (
-          ip TEXT PRIMARY KEY,
+          id SERIAL PRIMARY KEY,
+          ip TEXT,
+          deviceId TEXT,
           reason TEXT,
           bannedAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP
         )
@@ -70,9 +76,10 @@ class Database {
       // Rate limit tracking table
       await client.query(`
         CREATE TABLE IF NOT EXISTS rate_limit (
+          id SERIAL PRIMARY KEY,
           ip TEXT,
-          timestamp TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-          PRIMARY KEY (ip, timestamp)
+          deviceId TEXT,
+          timestamp TIMESTAMP DEFAULT CURRENT_TIMESTAMP
         )
       `);
 
@@ -83,6 +90,7 @@ class Database {
           barId INTEGER NOT NULL,
           reason TEXT NOT NULL,
           reportedByIP TEXT,
+          deviceId TEXT,
           reportedAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
           status TEXT DEFAULT 'pending' CHECK(status IN ('pending', 'reviewed', 'resolved')),
           FOREIGN KEY (barId) REFERENCES bars(id) ON DELETE CASCADE
@@ -94,6 +102,66 @@ class Database {
       console.error("Error initializing tables:", err);
     } finally {
       client.release();
+    }
+
+    try {
+      await client.query(`
+        ALTER TABLE admin_users ADD COLUMN IF NOT EXISTS twoFactorEnabled BOOLEAN DEFAULT FALSE
+      `);
+      console.log("✅ twoFactorEnabled column ensured");
+    } catch (err) {
+      console.log(
+        "ℹ️  twoFactorEnabled column already exists or error:",
+        err.message
+      );
+    }
+
+    try {
+      await client.query(`
+        ALTER TABLE bars ADD COLUMN IF NOT EXISTS deviceId TEXT
+      `);
+      console.log("✅ bars.deviceId column ensured");
+    } catch (err) {
+      console.log(
+        "ℹ️  bars.deviceId column already exists or error:",
+        err.message
+      );
+    }
+
+    try {
+      await client.query(`
+        ALTER TABLE reports ADD COLUMN IF NOT EXISTS deviceId TEXT
+      `);
+      console.log("✅ reports.deviceId column ensured");
+    } catch (err) {
+      console.log(
+        "ℹ️  reports.deviceId column already exists or error:",
+        err.message
+      );
+    }
+
+    try {
+      await client.query(`
+        ALTER TABLE banned_ips ADD COLUMN IF NOT EXISTS deviceId TEXT
+      `);
+      console.log("✅ banned_ips.deviceId column ensured");
+    } catch (err) {
+      console.log(
+        "ℹ️  banned_ips.deviceId column already exists or error:",
+        err.message
+      );
+    }
+
+    try {
+      await client.query(`
+        ALTER TABLE rate_limit ADD COLUMN IF NOT EXISTS deviceId TEXT
+      `);
+      console.log("✅ rate_limit.deviceId column ensured");
+    } catch (err) {
+      console.log(
+        "ℹ️  rate_limit.deviceId column already exists or error:",
+        err.message
+      );
     }
   }
 
