@@ -364,6 +364,42 @@ router.delete("/bars/:id", authenticateAdmin, async (req, res) => {
   }
 });
 
+// POST /api/admin/bars/:id/ban - ban submitter (IP/device)
+router.post("/bars/:id/ban", authenticateAdmin, async (req, res) => {
+  try {
+    const { id } = req.params;
+    const bar = await db.get(
+      "SELECT submittedByIP, deviceId FROM bars WHERE id = ?",
+      [id]
+    );
+
+    if (!bar) {
+      return res.status(404).json({ error: "Bar not found" });
+    }
+
+    const payload = {
+      ip: bar.submittedbyip || bar.submittedByIP || null,
+      deviceId: bar.deviceid || bar.deviceId || null,
+    };
+
+    if (!payload.ip && !payload.deviceId) {
+      return res
+        .status(400)
+        .json({ error: "No IP or device available for this bar" });
+    }
+
+    await db.run(
+      "INSERT INTO banned_ips (ip, deviceId, reason) VALUES (?, ?, ?)",
+      [payload.ip, payload.deviceId, "Automatic ban from bar"]
+    );
+
+    res.json({ message: "Submitter banned" });
+  } catch (error) {
+    console.error("Error banning submitter:", error);
+    res.status(500).json({ error: "Failed to ban submitter" });
+  }
+});
+
 // GET /api/admin/banned - Get all banned IPs
 router.get("/banned", authenticateAdmin, async (req, res) => {
   try {
