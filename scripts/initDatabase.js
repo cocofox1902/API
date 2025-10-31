@@ -59,7 +59,9 @@ async function initDatabase() {
         ALTER TABLE bars 
         ADD COLUMN IF NOT EXISTS createdAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP
       `);
-      await db.run(`UPDATE bars SET createdAt = CURRENT_TIMESTAMP WHERE createdAt IS NULL`);
+      await db.run(
+        `UPDATE bars SET createdAt = CURRENT_TIMESTAMP WHERE createdAt IS NULL`
+      );
       console.log("✅ bars.createdAt column ensured");
     } catch (err) {
       console.log("ℹ️  bars.createdAt ensure skipped:", err.message);
@@ -70,7 +72,9 @@ async function initDatabase() {
         ALTER TABLE reports 
         ADD COLUMN IF NOT EXISTS reportedAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP
       `);
-      await db.run(`UPDATE reports SET reportedAt = CURRENT_TIMESTAMP WHERE reportedAt IS NULL`);
+      await db.run(
+        `UPDATE reports SET reportedAt = CURRENT_TIMESTAMP WHERE reportedAt IS NULL`
+      );
       console.log("✅ reports.reportedAt column ensured");
     } catch (err) {
       console.log("ℹ️  reports.reportedAt ensure skipped:", err.message);

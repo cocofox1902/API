@@ -132,7 +132,9 @@ class Database {
       await this.pool.query(`
         ALTER TABLE bars ADD COLUMN IF NOT EXISTS createdAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP
       `);
-      await this.pool.query(`UPDATE bars SET createdAt = NOW() WHERE createdAt IS NULL`);
+      await this.pool.query(
+        `UPDATE bars SET createdAt = NOW() WHERE createdAt IS NULL`
+      );
       console.log("✅ bars.createdAt column ensured");
     } catch (err) {
       console.log("ℹ️  bars.createdAt column ensure error:", err.message);
@@ -154,7 +156,9 @@ class Database {
       await this.pool.query(`
         ALTER TABLE reports ADD COLUMN IF NOT EXISTS reportedAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP
       `);
-      await this.pool.query(`UPDATE reports SET reportedAt = NOW() WHERE reportedAt IS NULL`);
+      await this.pool.query(
+        `UPDATE reports SET reportedAt = NOW() WHERE reportedAt IS NULL`
+      );
       console.log("✅ reports.reportedAt column ensured");
     } catch (err) {
       console.log("ℹ️  reports.reportedAt column ensure error:", err.message);
@@ -188,7 +192,9 @@ class Database {
       await this.pool.query(`
         ALTER TABLE banned_ips ADD COLUMN IF NOT EXISTS bannedAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP
       `);
-      await this.pool.query(`UPDATE banned_ips SET bannedAt = NOW() WHERE bannedAt IS NULL`);
+      await this.pool.query(
+        `UPDATE banned_ips SET bannedAt = NOW() WHERE bannedAt IS NULL`
+      );
       console.log("✅ banned_ips.bannedAt column ensured");
     } catch (err) {
       console.log("ℹ️  banned_ips.bannedAt column ensure error:", err.message);
