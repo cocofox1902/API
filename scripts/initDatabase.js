@@ -54,6 +54,61 @@ async function initDatabase() {
       }
     }
 
+    try {
+      await db.run(`
+        ALTER TABLE bars 
+        ADD COLUMN IF NOT EXISTS createdAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+      `);
+      await db.run(`UPDATE bars SET createdAt = CURRENT_TIMESTAMP WHERE createdAt IS NULL`);
+      console.log("✅ bars.createdAt column ensured");
+    } catch (err) {
+      console.log("ℹ️  bars.createdAt ensure skipped:", err.message);
+    }
+
+    try {
+      await db.run(`
+        ALTER TABLE reports 
+        ADD COLUMN IF NOT EXISTS reportedAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+      `);
+      await db.run(`UPDATE reports SET reportedAt = CURRENT_TIMESTAMP WHERE reportedAt IS NULL`);
+      console.log("✅ reports.reportedAt column ensured");
+    } catch (err) {
+      console.log("ℹ️  reports.reportedAt ensure skipped:", err.message);
+    }
+
+    try {
+      await db.run(`
+        ALTER TABLE banned_ips 
+        ADD COLUMN IF NOT EXISTS id SERIAL
+      `);
+      await db.run(
+        `UPDATE banned_ips SET id = nextval('banned_ips_id_seq') WHERE id IS NULL`
+      );
+      console.log("✅ banned_ips.id column ensured");
+    } catch (err) {
+      console.log("ℹ️  banned_ips.id ensure skipped:", err.message);
+    }
+
+    try {
+      await db.run(`
+        ALTER TABLE banned_ips 
+        ADD COLUMN IF NOT EXISTS bannedAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+      `);
+      await db.run(
+        `UPDATE banned_ips SET bannedAt = CURRENT_TIMESTAMP WHERE bannedAt IS NULL`
+      );
+      console.log("✅ banned_ips.bannedAt column ensured");
+    } catch (err) {
+      console.log("ℹ️  banned_ips.bannedAt ensure skipped:", err.message);
+    }
+
+    try {
+      await db.run(`DELETE FROM banned_ips`);
+      console.log("✅ Existing banned entries cleared");
+    } catch (err) {
+      console.log("ℹ️  Unable to clear banned entries:", err.message);
+    }
+
     console.log("ℹ️  Sample bar seeding skipped (production data only)");
 
     console.log("✅ Database initialized successfully");

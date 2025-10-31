@@ -105,7 +105,7 @@ class Database {
     }
 
     try {
-      await client.query(`
+      await this.pool.query(`
         ALTER TABLE admin_users ADD COLUMN IF NOT EXISTS twoFactorEnabled BOOLEAN DEFAULT FALSE
       `);
       console.log("✅ twoFactorEnabled column ensured");
@@ -117,7 +117,7 @@ class Database {
     }
 
     try {
-      await client.query(`
+      await this.pool.query(`
         ALTER TABLE bars ADD COLUMN IF NOT EXISTS deviceId TEXT
       `);
       console.log("✅ bars.deviceId column ensured");
@@ -129,7 +129,17 @@ class Database {
     }
 
     try {
-      await client.query(`
+      await this.pool.query(`
+        ALTER TABLE bars ADD COLUMN IF NOT EXISTS createdAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+      `);
+      await this.pool.query(`UPDATE bars SET createdAt = NOW() WHERE createdAt IS NULL`);
+      console.log("✅ bars.createdAt column ensured");
+    } catch (err) {
+      console.log("ℹ️  bars.createdAt column ensure error:", err.message);
+    }
+
+    try {
+      await this.pool.query(`
         ALTER TABLE reports ADD COLUMN IF NOT EXISTS deviceId TEXT
       `);
       console.log("✅ reports.deviceId column ensured");
@@ -141,7 +151,17 @@ class Database {
     }
 
     try {
-      await client.query(`
+      await this.pool.query(`
+        ALTER TABLE reports ADD COLUMN IF NOT EXISTS reportedAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+      `);
+      await this.pool.query(`UPDATE reports SET reportedAt = NOW() WHERE reportedAt IS NULL`);
+      console.log("✅ reports.reportedAt column ensured");
+    } catch (err) {
+      console.log("ℹ️  reports.reportedAt column ensure error:", err.message);
+    }
+
+    try {
+      await this.pool.query(`
         ALTER TABLE banned_ips ADD COLUMN IF NOT EXISTS deviceId TEXT
       `);
       console.log("✅ banned_ips.deviceId column ensured");
@@ -153,7 +173,29 @@ class Database {
     }
 
     try {
-      await client.query(`
+      await this.pool.query(`
+        ALTER TABLE banned_ips ADD COLUMN IF NOT EXISTS id SERIAL
+      `);
+      await this.pool.query(`
+        UPDATE banned_ips SET id = nextval('banned_ips_id_seq') WHERE id IS NULL
+      `);
+      console.log("✅ banned_ips.id column ensured");
+    } catch (err) {
+      console.log("ℹ️  banned_ips.id column ensure error:", err.message);
+    }
+
+    try {
+      await this.pool.query(`
+        ALTER TABLE banned_ips ADD COLUMN IF NOT EXISTS bannedAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+      `);
+      await this.pool.query(`UPDATE banned_ips SET bannedAt = NOW() WHERE bannedAt IS NULL`);
+      console.log("✅ banned_ips.bannedAt column ensured");
+    } catch (err) {
+      console.log("ℹ️  banned_ips.bannedAt column ensure error:", err.message);
+    }
+
+    try {
+      await this.pool.query(`
         ALTER TABLE rate_limit ADD COLUMN IF NOT EXISTS deviceId TEXT
       `);
       console.log("✅ rate_limit.deviceId column ensured");
