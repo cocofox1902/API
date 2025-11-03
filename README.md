@@ -6,7 +6,7 @@ RESTful API for managing bar submissions with admin approval system, rate limiti
 
 - ✅ Bar submission and retrieval
 - ✅ Admin authentication with JWT
-- ✅ Rate limiting (10 submissions per hour per IP)
+- ✅ Rate limiting (désactivé)
 - ✅ IP banning system
 - ✅ SQLite database
 - ✅ CORS enabled
@@ -98,7 +98,7 @@ POST /api/bars
 }
 ```
 
-**Rate Limit:** 10 submissions per hour per IP
+**Rate Limit:** Désactivé (pas de limitation)
 
 ---
 
@@ -234,7 +234,7 @@ NODE_ENV=development
 
 ## Security Features
 
-1. **Rate Limiting**: Max 10 bar submissions per hour per IP
+1. **Rate Limiting**: Désactivé (pas de limitation)
 2. **IP Banning**: Admins can ban abusive IPs
 3. **JWT Authentication**: Secure admin endpoints
 4. **Password Hashing**: bcrypt for secure password storage
