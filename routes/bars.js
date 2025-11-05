@@ -19,7 +19,14 @@ router.get("/", async (req, res) => {
 // POST /api/bars - Submit a new bar (with rate limiting and IP ban check)
 router.post("/", checkBannedIP, rateLimiter, async (req, res) => {
   try {
-    const { name, latitude, longitude, regularPrice, deviceId } = req.body;
+    const {
+      name,
+      latitude,
+      longitude,
+      regularPrice,
+      happyHourPrice,
+      deviceId,
+    } = req.body;
 
     // Validation
     if (!name || !latitude || !longitude || !regularPrice) {
@@ -39,12 +46,32 @@ router.post("/", checkBannedIP, rateLimiter, async (req, res) => {
       });
     }
 
+    // Validation du prix happy hour (optionnel)
+    if (
+      happyHourPrice !== null &&
+      happyHourPrice !== undefined &&
+      typeof happyHourPrice !== "number"
+    ) {
+      return res.status(400).json({
+        error: "happyHourPrice must be a number or null",
+      });
+    }
+
     const ip = req.clientIp || req.ip;
     req.deviceId = deviceId;
 
     const result = await db.run(
-      "INSERT INTO bars (name, latitude, longitude, regularPrice, status, submittedByIP, deviceId) VALUES (?, ?, ?, ?, ?, ?, ?) RETURNING id",
-      [name, latitude, longitude, regularPrice, "pending", ip, deviceId || null]
+      "INSERT INTO bars (name, latitude, longitude, regularPrice, happyHourPrice, status, submittedByIP, deviceId) VALUES (?, ?, ?, ?, ?, ?, ?, ?) RETURNING id",
+      [
+        name,
+        latitude,
+        longitude,
+        regularPrice,
+        happyHourPrice || null,
+        "pending",
+        ip,
+        deviceId || null,
+      ]
     );
 
     res.status(201).json({

@@ -3,7 +3,7 @@ const db = require("../config/database");
 // Rate limiter désactivé - pas de limitation
 const rateLimiter = async (req, res, next) => {
   // Limitation désactivée, passer directement à la suite
-  next();
+    next();
 };
 
 // Check if IP or deviceId is banned
