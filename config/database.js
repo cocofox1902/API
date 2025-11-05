@@ -211,6 +211,75 @@ class Database {
         err.message
       );
     }
+
+    try {
+      await this.pool.query(`
+        ALTER TABLE bars RENAME COLUMN "happyHourPrice" TO happyhourprice
+      `);
+      console.log("✅ bars.happyhourprice column normalized");
+    } catch (err) {
+      if (!err.message.includes("does not exist")) {
+        console.log(
+          "ℹ️  bars.happyHourPrice rename skipped or error:",
+          err.message
+        );
+      }
+    }
+
+    try {
+      await this.pool.query(`
+        ALTER TABLE bars ADD COLUMN IF NOT EXISTS happyhourprice REAL
+      `);
+      console.log("✅ bars.happyhourprice column ensured");
+    } catch (err) {
+      console.log("ℹ️  bars.happyhourprice column ensure error:", err.message);
+    }
+
+    try {
+      await this.pool.query(`
+        ALTER TABLE bars RENAME COLUMN "happyHourStart" TO happyhourstart
+      `);
+      console.log("✅ bars.happyhourstart column normalized");
+    } catch (err) {
+      if (!err.message.includes("does not exist")) {
+        console.log(
+          "ℹ️  bars.happyHourStart rename skipped or error:",
+          err.message
+        );
+      }
+    }
+
+    try {
+      await this.pool.query(`
+        ALTER TABLE bars RENAME COLUMN "happyHourEnd" TO happyhourend
+      `);
+      console.log("✅ bars.happyhourend column normalized");
+    } catch (err) {
+      if (!err.message.includes("does not exist")) {
+        console.log(
+          "ℹ️  bars.happyHourEnd rename skipped or error:",
+          err.message
+        );
+      }
+    }
+
+    try {
+      await this.pool.query(`
+        ALTER TABLE bars ADD COLUMN IF NOT EXISTS happyhourstart TEXT
+      `);
+      console.log("✅ bars.happyhourstart column ensured");
+    } catch (err) {
+      console.log("ℹ️  bars.happyhourstart column ensure error:", err.message);
+    }
+
+    try {
+      await this.pool.query(`
+        ALTER TABLE bars ADD COLUMN IF NOT EXISTS happyhourend TEXT
+      `);
+      console.log("✅ bars.happyhourend column ensured");
+    } catch (err) {
+      console.log("ℹ️  bars.happyhourend column ensure error:", err.message);
+    }
   }
 
   async run(sql, params = []) {
