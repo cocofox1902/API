@@ -13,7 +13,7 @@ const checkBannedIP = async (req, res, next) => {
     const { deviceId } = req.body || {};
 
     const banned = await db.get(
-      "SELECT * FROM banned_ips WHERE (ip IS NOT NULL AND ip = ?) OR (deviceId IS NOT NULL AND deviceId = ?)",
+      "SELECT * FROM banned_ips WHERE (ip IS NOT NULL AND ip = ?) OR (deviceid IS NOT NULL AND deviceid = ?)",
       [ip, deviceId || null]
     );
 

@@ -61,7 +61,7 @@ router.post("/", checkBannedIP, rateLimiter, async (req, res) => {
     req.deviceId = deviceId;
 
     const result = await db.run(
-      "INSERT INTO bars (name, latitude, longitude, regularPrice, happyHourPrice, status, submittedByIP, deviceId) VALUES (?, ?, ?, ?, ?, ?, ?, ?) RETURNING id",
+      "INSERT INTO bars (name, latitude, longitude, regularprice, happyhourprice, status, submittedbyip, deviceid) VALUES (?, ?, ?, ?, ?, ?, ?, ?) RETURNING id",
       [
         name,
         latitude,
@@ -112,7 +112,7 @@ router.post("/:id/report", checkBannedIP, rateLimiter, async (req, res) => {
 
     // Insert report
     const result = await db.run(
-      "INSERT INTO reports (barId, reason, reportedByIP, deviceId) VALUES (?, ?, ?, ?) RETURNING id",
+      "INSERT INTO reports (barid, reason, reportedbyip, deviceid) VALUES (?, ?, ?, ?) RETURNING id",
       [id, reason.trim(), ip, deviceId || null]
     );
 

@@ -310,7 +310,7 @@ router.patch("/bars/:id/reject", authenticateAdmin, async (req, res) => {
 router.put("/bars/:id", authenticateAdmin, async (req, res) => {
   try {
     const { id } = req.params;
-    const { name, latitude, longitude, regularPrice } = req.body;
+    const { name, latitude, longitude, regularPrice, happyHourPrice } = req.body;
 
     // Validate required fields
     if (!name || !latitude || !longitude || !regularPrice) {
@@ -321,6 +321,15 @@ router.put("/bars/:id", authenticateAdmin, async (req, res) => {
     const price = parseFloat(regularPrice);
     if (isNaN(price) || price <= 0) {
       return res.status(400).json({ error: "Invalid price" });
+    }
+
+    // Validate happy hour price if provided
+    let hhPrice = null;
+    if (happyHourPrice !== null && happyHourPrice !== undefined) {
+      hhPrice = parseFloat(happyHourPrice);
+      if (isNaN(hhPrice) || hhPrice <= 0) {
+        return res.status(400).json({ error: "Invalid happy hour price" });
+      }
     }
 
     // Validate coordinates
@@ -339,8 +348,8 @@ router.put("/bars/:id", authenticateAdmin, async (req, res) => {
 
     // Update bar
     await db.run(
-      "UPDATE bars SET name = ?, latitude = ?, longitude = ?, regularPrice = ? WHERE id = ?",
-      [name.trim(), lat, lng, price, id]
+      "UPDATE bars SET name = ?, latitude = ?, longitude = ?, regularprice = ?, happyhourprice = ? WHERE id = ?",
+      [name.trim(), lat, lng, price, hhPrice, id]
     );
 
     res.json({ message: "Bar updated successfully" });
@@ -369,7 +378,7 @@ router.post("/bars/:id/ban", authenticateAdmin, async (req, res) => {
   try {
     const { id } = req.params;
     const bar = await db.get(
-      "SELECT submittedByIP, deviceId FROM bars WHERE id = ?",
+      "SELECT submittedbyip, deviceid FROM bars WHERE id = ?",
       [id]
     );
 
@@ -389,7 +398,7 @@ router.post("/bars/:id/ban", authenticateAdmin, async (req, res) => {
     }
 
     await db.run(
-      "INSERT INTO banned_ips (ip, deviceId, reason) VALUES (?, ?, ?)",
+      "INSERT INTO banned_ips (ip, deviceid, reason) VALUES (?, ?, ?)",
       [payload.ip, payload.deviceId, "Automatic ban from bar"]
     );
 
@@ -404,7 +413,7 @@ router.post("/bars/:id/ban", authenticateAdmin, async (req, res) => {
 router.get("/banned", authenticateAdmin, async (req, res) => {
   try {
     const banned = await db.all(
-      "SELECT id, ip, deviceId, reason, bannedAt FROM banned_ips ORDER BY bannedAt DESC"
+      "SELECT id, ip, deviceid, reason, bannedat FROM banned_ips ORDER BY bannedat DESC"
     );
     res.json(banned);
   } catch (error) {
@@ -423,7 +432,7 @@ router.post("/ban", authenticateAdmin, async (req, res) => {
     }
 
     await db.run(
-      "INSERT INTO banned_ips (ip, deviceId, reason) VALUES (?, ?, ?)",
+      "INSERT INTO banned_ips (ip, deviceid, reason) VALUES (?, ?, ?)",
       [ip || null, deviceId || null, reason || ""]
     );
 
@@ -486,9 +495,9 @@ router.get("/stats", authenticateAdmin, async (req, res) => {
     );
     const activeDevices = await db.get(`
       SELECT COUNT(*) as count FROM (
-        SELECT deviceId FROM bars WHERE deviceId IS NOT NULL
+        SELECT deviceid FROM bars WHERE deviceid IS NOT NULL
         UNION
-        SELECT deviceId FROM reports WHERE deviceId IS NOT NULL
+        SELECT deviceid FROM reports WHERE deviceid IS NOT NULL
       ) as devices
     `);
 
