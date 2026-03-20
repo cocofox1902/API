@@ -264,11 +264,11 @@ router.get("/bars", authenticateAdmin, async (req, res) => {
 
     if (status) {
       bars = await db.all(
-        "SELECT * FROM bars WHERE status = ? ORDER BY submittedAt DESC",
+        "SELECT * FROM bars WHERE status = ? ORDER BY createdat DESC",
         [status]
       );
     } else {
-      bars = await db.all("SELECT * FROM bars ORDER BY submittedAt DESC");
+      bars = await db.all("SELECT * FROM bars ORDER BY createdat DESC");
     }
 
     res.json(bars);
@@ -486,7 +486,7 @@ router.get("/stats", authenticateAdmin, async (req, res) => {
     );
     const totalBars = await db.get("SELECT COUNT(*) as count FROM bars");
     const barsThisWeek = await db.get(
-      "SELECT COUNT(*) as count FROM bars WHERE createdAt >= NOW() - INTERVAL '7 days'"
+      "SELECT COUNT(*) as count FROM bars WHERE createdat >= NOW() - INTERVAL '7 days'"
     );
     const bannedIPs = await db.get("SELECT COUNT(*) as count FROM banned_ips");
     const reports = await db.get(
@@ -527,17 +527,17 @@ router.get("/reports", authenticateAdmin, async (req, res) => {
       reports = await db.all(
         `SELECT reports.*, bars.name as barName, bars.latitude, bars.longitude 
          FROM reports 
-         JOIN bars ON reports.barId = bars.id 
+         JOIN bars ON reports.barid = bars.id 
          WHERE reports.status = ? 
-         ORDER BY reports.reportedAt DESC`,
+         ORDER BY reports.reportedat DESC`,
         [status]
       );
     } else {
       reports = await db.all(
         `SELECT reports.*, bars.name as barName, bars.latitude, bars.longitude 
          FROM reports 
-         JOIN bars ON reports.barId = bars.id 
-         ORDER BY reports.reportedAt DESC`
+         JOIN bars ON reports.barid = bars.id 
+         ORDER BY reports.reportedat DESC`
       );
     }
 

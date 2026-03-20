@@ -1,3 +1,6 @@
+// Load .env before database.js (Pool reads DATABASE_URL at require time)
+require("dotenv").config();
+
 const bcrypt = require("bcrypt");
 const db = require("../config/database");
 

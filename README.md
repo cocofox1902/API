@@ -1,273 +1,210 @@
-# 🍺 BudBeer API
+# BudBeer API
 
-RESTful API for managing bar submissions with admin approval system, rate limiting, and IP banning.
+REST API for bar submissions, admin approval, reports, IP/device banning, and JWT admin auth.
 
-## Features
+**First time with Supabase?** Follow **[SETUP_SUPABASE.md](SETUP_SUPABASE.md)**.
 
-- ✅ Bar submission and retrieval
-- ✅ Admin authentication with JWT
-- ✅ Rate limiting (désactivé)
-- ✅ IP banning system
-- ✅ SQLite database
-- ✅ CORS enabled
+**Deploy the API (free):** **[RENDER_DEPLOYMENT.md](RENDER_DEPLOYMENT.md)** and root [`render.yaml`](../render.yaml) for Render + Supabase.
 
-## Tech Stack
+## Tech stack
 
 - **Node.js** + **Express**
-- **SQLite3** for database
-- **JWT** for authentication
-- **bcrypt** for password hashing
+- **PostgreSQL** via `pg` (local or **Supabase**)
+- **JWT** + **bcrypt** for admin auth
+- **CORS** enabled
+
+## Supabase setup (recommended for production)
+
+See **[SETUP_SUPABASE.md](SETUP_SUPABASE.md)** for the full step-by-step.
+
+Short version:
+
+1. Create a Supabase project and copy the **Database** connection URI (direct, port `5432`).
+2. In **SQL Editor**, run [`supabase/migrations/001_init.sql`](supabase/migrations/001_init.sql) once. If the **policy** step fails, run [`001_tables_only.sql`](supabase/migrations/001_tables_only.sql) then optionally [`002_rls_bars_optional.sql`](supabase/migrations/002_rls_bars_optional.sql).
+3. Copy [`.env.example`](.env.example) to `.env` and set `DATABASE_URL` and `JWT_SECRET`.
+4. Run `npm run verify:db` to confirm the connection and that `bars` exists.
+
+**Important:** If `DATABASE_URL` contains `supabase.co`, the API **does not** run in-app `CREATE TABLE` / `ALTER` DDL (`RUN_API_DDL` defaults to off). Schema changes go through SQL migrations in the dashboard.
+
+**SSL:** Enabled automatically for Supabase hosts. See `.env.example` for overrides.
+
+### Local PostgreSQL (no Supabase)
+
+- Set `DATABASE_URL` to your local connection string.
+- Either run the same `001_init.sql` in `psql`, or leave `RUN_API_DDL` at default **true** so the API creates tables on startup (legacy behavior).
+
+## Environment variables
+
+| Variable | Description |
+|----------|-------------|
+| `DATABASE_URL` | PostgreSQL connection URI (required) |
+| `JWT_SECRET` | Secret for signing admin JWTs (required in production) |
+| `PORT` | Server port (default `3000`) |
+| `NODE_ENV` | `production` enables stricter SSL behavior with some hosts |
+| `RUN_API_DDL` | `true` / `false` — force on/off in-app DDL (default: **off** if URL contains `supabase.co`) |
+| `DATABASE_SSL` | `true` / `false` — override SSL detection |
+| `CLEAR_BARS_BEFORE_SEED` | Set to `true` when running `npm run seed:bars` to truncate `bars` (and dependent rows) first |
+
+Optional (for a future mobile/admin Supabase client — **not** used by Express today):
+
+- `SUPABASE_URL`
+- `SUPABASE_ANON_KEY` (publishable / anon key)
 
 ## Installation
 
-1. **Navigate to the API folder:**
-   ```bash
-   cd API
-   ```
-
-2. **Install dependencies:**
-   ```bash
-   npm install
-   ```
-
-3. **Initialize the database and create admin user:**
-   ```bash
-   npm run init-db
-   ```
-   This creates a default admin user:
-   - Username: `admin`
-   - Password: `admin`
-
-4. **Start the server:**
-   ```bash
-   npm start
-   ```
-   
-   Or for development with auto-reload:
-   ```bash
-   npm run dev
-   ```
-
-The API will be running at `http://localhost:3000`
-
-## API Endpoints
-
-### Public Endpoints
-
-#### Get All Approved Bars
-```http
-GET /api/bars
+```bash
+cd API
+npm install
+cp .env.example .env
+# Edit .env: DATABASE_URL, JWT_SECRET
 ```
 
-**Response:**
+### Create admin user (after DB exists)
+
+```bash
+npm run init-db
+```
+
+Default credentials (change immediately in production):
+
+- Username: `admin`
+- Password: `admin`
+
+### Seed bars from `bar_final.json`
+
+```bash
+# Idempotent only if you clear first (or empty DB)
+CLEAR_BARS_BEFORE_SEED=true npm run seed:bars
+```
+
+Without `CLEAR_BARS_BEFORE_SEED`, rows are **appended** (duplicates possible).
+
+### Run the server
+
+```bash
+npm start
+# or
+npm run dev
+```
+
+Base URL: `http://localhost:3000` (or your `PORT`).
+
+---
+
+## Public API
+
+### `GET /api/bars`
+
+Returns **approved** bars in the same **shape as** [`bar_final.json`](bar_final.json) (envelope + nested `location`).
+
+**Response (breaking change vs old flat array):**
+
 ```json
-[
-  {
-    "id": 1,
-    "name": "Bar Name",
-    "latitude": 48.8566,
-    "longitude": 2.3522,
-    "regularPrice": 5.50,
-    "status": "approved",
-    "submittedAt": "2024-01-15T10:30:00.000Z",
-    "submittedByIP": "192.168.1.1"
-  }
-]
+{
+  "bars": [
+    {
+      "name": "La Panthère Ose",
+      "location": { "latitude": 48.8792864, "longitude": 2.3458252 },
+      "prixPinte": 6.5,
+      "prixPinteHappyHour": 5,
+      "startHappyHour": "15:00",
+      "endHappyHour": "21:00"
+    }
+  ]
+}
 ```
 
-#### Submit a New Bar
-```http
-POST /api/bars
-```
+Admin panel and any old clients expecting a **raw array** of DB rows must be updated (planned separately).
 
-**Request Body:**
+### `POST /api/bars`
+
+Submit a bar (status `pending`). Body can use **either** the legacy flat fields **or** `bar_final`-style fields:
+
+**Flat (legacy):**
+
 ```json
 {
   "name": "New Bar",
   "latitude": 48.8566,
   "longitude": 2.3522,
-  "regularPrice": 5.50
+  "regularPrice": 5.5,
+  "happyHourPrice": 4,
+  "deviceId": "optional"
 }
 ```
 
-**Response:**
+**Nested (bar_final-style):**
+
 ```json
 {
-  "message": "Bar submitted successfully and is pending approval",
-  "id": 2
+  "name": "New Bar",
+  "location": { "latitude": 48.8566, "longitude": 2.3522 },
+  "prixPinte": 5.5,
+  "prixPinteHappyHour": 4,
+  "startHappyHour": "17:00",
+  "endHappyHour": "20:00",
+  "deviceId": "optional"
 }
 ```
 
-**Rate Limit:** Désactivé (pas de limitation)
+Optional happy-hour times are stored when provided.
+
+### `POST /api/bars/:id/report`
+
+Report a bar (rate limit middleware present; currently passes through).
 
 ---
 
-### Admin Endpoints (Require Authentication)
+## Admin API (`Authorization: Bearer <token>`)
 
-#### Admin Login
-```http
-POST /api/admin/login
-```
+- `POST /api/admin/login` — body: `{ "username", "password" }`
+- `GET /api/admin/bars` — query `?status=pending|approved|rejected`; returns **database rows** (lowercase keys from Postgres), not the `bar_final` shape. **Admin UI updates are a separate task.**
+- `PATCH /api/admin/bars/:id/approve` | `.../reject`
+- `PUT /api/admin/bars/:id` — update name, coordinates, `regularPrice`, `happyHourPrice`
+- `DELETE /api/admin/bars/:id`
+- `POST /api/admin/bars/:id/ban` — ban submitter IP/device
+- `GET /api/admin/stats`, `GET /api/admin/reports`, etc.
+- Banned list: `GET /api/admin/banned`, `POST /api/admin/ban`, `DELETE /api/admin/banned/:id`, `DELETE /api/admin/banned-ips/:ip`
 
-**Request Body:**
-```json
-{
-  "username": "admin",
-  "password": "admin"
-}
-```
-
-**Response:**
-```json
-{
-  "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...",
-  "username": "admin"
-}
-```
-
-Use the token in subsequent requests:
-```http
-Authorization: Bearer YOUR_TOKEN
-```
-
-#### Get Bars by Status
-```http
-GET /api/admin/bars?status=pending
-```
-
-Query parameters:
-- `status`: `pending`, `approved`, or `rejected` (optional)
-
-#### Approve a Bar
-```http
-PATCH /api/admin/bars/:id/approve
-```
-
-#### Reject a Bar
-```http
-PATCH /api/admin/bars/:id/reject
-```
-
-#### Delete a Bar
-```http
-DELETE /api/admin/bars/:id
-```
-
-#### Get Dashboard Statistics
-```http
-GET /api/admin/stats
-```
-
-**Response:**
-```json
-{
-  "pending": 5,
-  "approved": 42,
-  "rejected": 3,
-  "bannedIPs": 2
-}
-```
-
-#### Get Banned IPs
-```http
-GET /api/admin/banned-ips
-```
-
-#### Ban an IP
-```http
-POST /api/admin/banned-ips
-```
-
-**Request Body:**
-```json
-{
-  "ip": "192.168.1.100",
-  "reason": "Spam submissions"
-}
-```
-
-#### Unban an IP
-```http
-DELETE /api/admin/banned-ips/:ip
-```
+See [`routes/admin.js`](routes/admin.js) for the full set.
 
 ---
 
-## Environment Variables
+## Database schema (Supabase migration)
 
-Create a `.env` file in the API folder (or use the existing one):
+Canonical DDL: [`supabase/migrations/001_init.sql`](supabase/migrations/001_init.sql).
 
-```env
-PORT=3000
-JWT_SECRET=your-secret-key-change-in-production
-NODE_ENV=development
-```
+Postgres stores **lowercase** identifiers; `node-pg` returns keys like `regularprice`, `createdat`, `barid`, etc.
 
-**⚠️ Important:** Change `JWT_SECRET` to a secure random string in production!
+Main tables:
 
-## Database Schema
+- **bars** — `regularprice`, `happyhourprice`, `happyhourstart`, `happyhourend`, `status`, `submittedbyip`, `deviceid`, `createdat`
+- **reports** — `barid` FK → `bars.id`
+- **admin_users** — `twofactorsecret`, `twofactorenabled`, …
+- **banned_ips**, **rate_limit**
 
-### `bars` table
-- `id` - Auto-increment primary key
-- `name` - Bar name
-- `latitude` - Latitude coordinate
-- `longitude` - Longitude coordinate
-- `regularPrice` - Price in euros
-- `status` - `pending`, `approved`, or `rejected`
-- `submittedAt` - Timestamp
-- `submittedByIP` - IP address of submitter
+Direct connections with the `postgres` user **bypass RLS**. RLS policies apply to Supabase **anon / authenticated** roles using the Data API.
 
-### `admin_users` table
-- `id` - Auto-increment primary key
-- `username` - Admin username (unique)
-- `password` - Hashed password
-- `createdAt` - Timestamp
+---
 
-### `banned_ips` table
-- `ip` - IP address (primary key)
-- `reason` - Ban reason
-- `bannedAt` - Timestamp
+## Scripts
 
-### `rate_limit` table
-- `ip` - IP address
-- `timestamp` - Request timestamp
+| Script | Purpose |
+|--------|---------|
+| `npm start` | Run API |
+| `npm run dev` | Nodemon |
+| `npm run init-db` | Ensure admin user + minor migrations |
+| `npm run migrate-2fa` | 2FA column migration |
+| `npm run seed:bars` | Import [`bar_final.json`](bar_final.json) |
 
-## Security Features
+---
 
-1. **Rate Limiting**: Désactivé (pas de limitation)
-2. **IP Banning**: Admins can ban abusive IPs
-3. **JWT Authentication**: Secure admin endpoints
-4. **Password Hashing**: bcrypt for secure password storage
+## Security notes
 
-## Development
-
-```bash
-# Install dependencies
-npm install
-
-# Run in development mode (auto-reload)
-npm run dev
-
-# Initialize/reset database
-npm run init-db
-
-# Start production server
-npm start
-```
-
-## Deployment
-
-1. Set environment variables on your hosting platform
-2. Run `npm run init-db` to initialize the database
-3. Run `npm start` to start the server
-
-Recommended hosting platforms:
-- [Railway](https://railway.app)
-- [Render](https://render.com)
-- [Heroku](https://heroku.com)
-- [DigitalOcean](https://digitalocean.com)
+- Change **JWT_SECRET** and default **admin** password in production.
+- Do not commit `.env` (see [`.gitignore`](.gitignore)).
+- The **database password** and **service role** key must never ship inside a public mobile app; use **anon key + RLS** for client-side Supabase access when you add it.
 
 ## License
 
 MIT
-

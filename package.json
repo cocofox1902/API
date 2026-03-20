@@ -7,7 +7,9 @@
     "start": "node server.js",
     "dev": "nodemon server.js",
     "init-db": "node scripts/initDatabase.js",
-    "migrate-2fa": "node scripts/migrate2FA.js"
+    "migrate-2fa": "node scripts/migrate2FA.js",
+    "seed:bars": "node scripts/seedBarFinal.js",
+    "verify:db": "node scripts/verifyDatabase.js"
   },
   "keywords": [
     "api",

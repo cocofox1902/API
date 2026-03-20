@@ -1,3 +1,5 @@
+require("dotenv").config();
+
 const db = require("../config/database");
 
 async function migrate() {

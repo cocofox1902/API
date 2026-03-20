@@ -1,0 +1,2314 @@
+{
+  "bars": [
+    {
+      "name": "La Panthère Ose",
+      "location": {
+        "latitude": 48.8792864,
+        "longitude": 2.3458252000000357
+      },
+      "prixPinte": 6.5,
+      "prixPinteHappyHour": 5,
+      "startHappyHour": "15:00",
+      "endHappyHour": "21:00"
+    },
+    {
+      "name": "Eden Park Pub",
+      "location": {
+        "latitude": 48.8523517,
+        "longitude": 2.334371
+      },
+      "prixPinte": 8,
+      "prixPinteHappyHour": 6,
+      "startHappyHour": "17:00",
+      "endHappyHour": "20:00"
+    },
+    {
+      "name": "Red Factory",
+      "location": {
+        "latitude": 48.8536803,
+        "longitude": 2.3729434
+      },
+      "prixPinte": 8,
+      "prixPinteHappyHour": 6.5,
+      "startHappyHour": "17:00",
+      "endHappyHour": "02:00"
+    },
+    {
+      "name": "Miami Bar",
+      "location": {
+        "latitude": 48.8542212,
+        "longitude": 2.371658600000046
+      },
+      "prixPinte": 7,
+      "prixPinteHappyHour": 4,
+      "startHappyHour": "18:00",
+      "endHappyHour": "20:00"
+    },
+    {
+      "name": "Gladines Batignolles",
+      "location": {
+        "latitude": 48.8822451,
+        "longitude": 2.3197087
+      },
+      "prixPinte": 6,
+      "prixPinteHappyHour": 5,
+      "startHappyHour": "17:00",
+      "endHappyHour": "22:00"
+    },
+    {
+      "name": "Le Bercail",
+      "location": {
+        "latitude": 48.8665,
+        "longitude": 2.38098
+      },
+      "prixPinte": 8,
+      "prixPinteHappyHour": null,
+      "startHappyHour": "17:00",
+      "endHappyHour": "20:00"
+    },
+    {
+      "name": "Balou 3",
+      "location": {
+        "latitude": 48.8630101,
+        "longitude": 2.3518188
+      },
+      "prixPinte": 7.5,
+      "prixPinteHappyHour": 6.5,
+      "startHappyHour": "16:00",
+      "endHappyHour": "02:00"
+    },
+    {
+      "name": "Le Café du Village - Paris",
+      "location": {
+        "latitude": 48.83111390000001,
+        "longitude": 2.3581996
+      },
+      "prixPinte": 9,
+      "prixPinteHappyHour": 7,
+      "startHappyHour": "17:00",
+      "endHappyHour": "21:00"
+    },
+    {
+      "name": "Bahloulou",
+      "location": {
+        "latitude": 48.8457472,
+        "longitude": 2.349017700000001
+      },
+      "prixPinte": 6,
+      "prixPinteHappyHour": null,
+      "startHappyHour": "16:00",
+      "endHappyHour": "02:00"
+    },
+    {
+      "name": "Bon Ami",
+      "location": {
+        "latitude": 48.833333,
+        "longitude": 2.324342
+      },
+      "prixPinte": 8,
+      "prixPinteHappyHour": 7,
+      "startHappyHour": "15:00",
+      "endHappyHour": "21:00"
+    },
+    {
+      "name": "L'Evidence",
+      "location": {
+        "latitude": 48.882233,
+        "longitude": 2.367489
+      },
+      "prixPinte": 5,
+      "prixPinteHappyHour": 5,
+      "startHappyHour": "16:00",
+      "endHappyHour": "02:00"
+    },
+    {
+      "name": "Au Loup",
+      "location": {
+        "latitude": 48.8724174,
+        "longitude": 2.3446242
+      },
+      "prixPinte": 9,
+      "prixPinteHappyHour": 9,
+      "startHappyHour": "17:00",
+      "endHappyHour": "02:00"
+    },
+    {
+      "name": "Au Mathurin",
+      "location": {
+        "latitude": 48.8780758,
+        "longitude": 2.3721253
+      },
+      "prixPinte": 6,
+      "prixPinteHappyHour": 6,
+      "startHappyHour": "12:00",
+      "endHappyHour": "02:00"
+    },
+    {
+      "name": "Gentleman",
+      "location": {
+        "latitude": 48.8525467,
+        "longitude": 2.343118
+      },
+      "prixPinte": 9,
+      "prixPinteHappyHour": 6,
+      "startHappyHour": "17:00",
+      "endHappyHour": "22:00"
+    },
+    {
+      "name": "Les Causeurs",
+      "location": {
+        "latitude": 48.8706503,
+        "longitude": 2.343066299999999
+      },
+      "prixPinte": 8,
+      "prixPinteHappyHour": null,
+      "startHappyHour": "17:00",
+      "endHappyHour": "00:00"
+    },
+    {
+      "name": "Le Five Bar",
+      "location": {
+        "latitude": 48.85145270000001,
+        "longitude": 2.337925
+      },
+      "prixPinte": 7,
+      "prixPinteHappyHour": 5,
+      "startHappyHour": "18:00",
+      "endHappyHour": "20:00"
+    },
+    {
+      "name": "Rockstar Café",
+      "location": {
+        "latitude": 48.8633134,
+        "longitude": 2.3704645
+      },
+      "prixPinte": 4.5,
+      "prixPinteHappyHour": 3.5,
+      "startHappyHour": "15:00",
+      "endHappyHour": "02:00"
+    },
+    {
+      "name": "Lobo",
+      "location": {
+        "latitude": 48.8595607,
+        "longitude": 2.3768247
+      },
+      "prixPinte": 5,
+      "prixPinteHappyHour": 4,
+      "startHappyHour": "15:00",
+      "endHappyHour": "02:00"
+    },
+    {
+      "name": "Le Marilyn",
+      "location": {
+        "latitude": 48.86616,
+        "longitude": 2.379785
+      },
+      "prixPinte": 8,
+      "prixPinteHappyHour": null,
+      "startHappyHour": null,
+      "endHappyHour": null
+    },
+    {
+      "name": "Onï",
+      "location": {
+        "latitude": 48.86576843261719,
+        "longitude": 2.3819093704223633
+      },
+      "prixPinte": 7,
+      "prixPinteHappyHour": 5.5,
+      "startHappyHour": "17:00",
+      "endHappyHour": "20:00"
+    },
+    {
+      "name": "L'Heure Sup",
+      "location": {
+        "latitude": 48.8378163,
+        "longitude": 2.2870256
+      },
+      "prixPinte": 7.1,
+      "prixPinteHappyHour": 6,
+      "startHappyHour": "17:00",
+      "endHappyHour": "20:00"
+    },
+    {
+      "name": "Celina",
+      "location": {
+        "latitude": 48.8411433,
+        "longitude": 2.3435416
+      },
+      "prixPinte": 7.5,
+      "prixPinteHappyHour": 6,
+      "startHappyHour": "14:00",
+      "endHappyHour": "00:00"
+    },
+    {
+      "name": "Rosie’s Smokehouse Barbecue",
+      "location": {
+        "latitude": 48.85284100000001,
+        "longitude": 2.3459185
+      },
+      "prixPinte": 9,
+      "prixPinteHappyHour": 6,
+      "startHappyHour": "15:00",
+      "endHappyHour": "21:00"
+    },
+    {
+      "name": "NAVARRO Pub - Bar à Jeux",
+      "location": {
+        "latitude": 48.8895545,
+        "longitude": 2.3224644
+      },
+      "prixPinte": 8,
+      "prixPinteHappyHour": 6,
+      "startHappyHour": "16:00",
+      "endHappyHour": "22:00"
+    },
+    {
+      "name": "Le Remontalou",
+      "location": {
+        "latitude": 48.8437966,
+        "longitude": 2.3820487
+      },
+      "prixPinte": 7,
+      "prixPinteHappyHour": 5,
+      "startHappyHour": "17:00",
+      "endHappyHour": "21:00"
+    },
+    {
+      "name": "Charlotte Bar",
+      "location": {
+        "latitude": 48.8539585,
+        "longitude": 2.3719393
+      },
+      "prixPinte": 10,
+      "prixPinteHappyHour": 5,
+      "startHappyHour": "18:00",
+      "endHappyHour": "02:00"
+    },
+    {
+      "name": "Bardakis",
+      "location": {
+        "latitude": 48.8524327,
+        "longitude": 2.3449963
+      },
+      "prixPinte": 6.5,
+      "prixPinteHappyHour": 4.5,
+      "startHappyHour": "16:00",
+      "endHappyHour": "23:00"
+    },
+    {
+      "name": "Cool'in Bar",
+      "location": {
+        "latitude": 48.86503630000001,
+        "longitude": 2.365896
+      },
+      "prixPinte": 6,
+      "prixPinteHappyHour": 4,
+      "startHappyHour": "18:00",
+      "endHappyHour": "23:00"
+    },
+    {
+      "name": "Bar du Bouillon",
+      "location": {
+        "latitude": 48.8702981,
+        "longitude": 2.3358041
+      },
+      "prixPinte": 6,
+      "prixPinteHappyHour": 5,
+      "startHappyHour": "17:00",
+      "endHappyHour": "23:00"
+    },
+    {
+      "name": "Les Blancs Becs",
+      "location": {
+        "latitude": 48.8825179,
+        "longitude": 2.3330807
+      },
+      "prixPinte": 7,
+      "prixPinteHappyHour": 5,
+      "startHappyHour": "18:00",
+      "endHappyHour": "20:00"
+    },
+    {
+      "name": "The Tennessee",
+      "location": {
+        "latitude": 48.8537516,
+        "longitude": 2.3390726
+      },
+      "prixPinte": 6.5,
+      "prixPinteHappyHour": 5,
+      "startHappyHour": "16:00",
+      "endHappyHour": "20:00"
+    },
+    {
+      "name": "Leo Bistrot",
+      "location": {
+        "latitude": 48.8730989,
+        "longitude": 2.3709467
+      },
+      "prixPinte": 6,
+      "prixPinteHappyHour": 4,
+      "startHappyHour": "17:00",
+      "endHappyHour": "22:00"
+    },
+    {
+      "name": "Le Maximilien",
+      "location": {
+        "latitude": 48.84581679999999,
+        "longitude": 2.3752139
+      },
+      "prixPinte": 6.5,
+      "prixPinteHappyHour": 4,
+      "startHappyHour": "16:00",
+      "endHappyHour": "00:00"
+    },
+    {
+      "name": "P'tit Louis",
+      "location": {
+        "latitude": 48.8455966,
+        "longitude": 2.3493416
+      },
+      "prixPinte": 6.5,
+      "prixPinteHappyHour": 6.5,
+      "startHappyHour": "17:30",
+      "endHappyHour": "02:00"
+    },
+    {
+      "name": "Le Gentilly",
+      "location": {
+        "latitude": 48.81968029999999,
+        "longitude": 2.3446655
+      },
+      "prixPinte": 6.5,
+      "prixPinteHappyHour": 3.5,
+      "startHappyHour": "17:00",
+      "endHappyHour": "00:00"
+    },
+    {
+      "name": "L’Astrolabe 18",
+      "location": {
+        "latitude": 48.8936272,
+        "longitude": 2.3293068
+      },
+      "prixPinte": 6,
+      "prixPinteHappyHour": 6,
+      "startHappyHour": "18:00",
+      "endHappyHour": "20:00"
+    },
+    {
+      "name": "Choubidou",
+      "location": {
+        "latitude": 48.8368351,
+        "longitude": 2.3186875
+      },
+      "prixPinte": 5,
+      "prixPinteHappyHour": 4.2,
+      "startHappyHour": "16:00",
+      "endHappyHour": "00:00"
+    },
+    {
+      "name": "Le Dr Lupin",
+      "location": {
+        "latitude": 48.8811265,
+        "longitude": 2.3375326
+      },
+      "prixPinte": 8,
+      "prixPinteHappyHour": 6,
+      "startHappyHour": "17:00",
+      "endHappyHour": "22:30"
+    },
+    {
+      "name": "The French Flair",
+      "location": {
+        "latitude": 48.8840156,
+        "longitude": 2.3304489
+      },
+      "prixPinte": 7.7,
+      "prixPinteHappyHour": 4.7,
+      "startHappyHour": "18:00",
+      "endHappyHour": "20:00"
+    },
+    {
+      "name": "La Cascade",
+      "location": {
+        "latitude": 48.8529898,
+        "longitude": 2.3926842
+      },
+      "prixPinte": 7,
+      "prixPinteHappyHour": 5,
+      "startHappyHour": "12:00",
+      "endHappyHour": "02:00"
+    },
+    {
+      "name": "Bistrot Du Forum",
+      "location": {
+        "latitude": 48.86369149999999,
+        "longitude": 2.3459059
+      },
+      "prixPinte": 6,
+      "prixPinteHappyHour": 5,
+      "startHappyHour": "16:00",
+      "endHappyHour": "23:00"
+    },
+    {
+      "name": "Au Bercail",
+      "location": {
+        "latitude": 48.8762862,
+        "longitude": 2.3409663
+      },
+      "prixPinte": 6,
+      "prixPinteHappyHour": 3.9,
+      "startHappyHour": "16:00",
+      "endHappyHour": "23:00"
+    },
+    {
+      "name": "Le Val Royal",
+      "location": {
+        "latitude": 48.8380585,
+        "longitude": 2.342205899999999
+      },
+      "prixPinte": 8,
+      "prixPinteHappyHour": 5.8,
+      "startHappyHour": "15:00",
+      "endHappyHour": "02:00"
+    },
+    {
+      "name": "Shywawa Pub",
+      "location": {
+        "latitude": 48.8524,
+        "longitude": 2.34632
+      },
+      "prixPinte": 8,
+      "prixPinteHappyHour": 7,
+      "startHappyHour": "17:00",
+      "endHappyHour": "22:00"
+    },
+    {
+      "name": "Station Café",
+      "location": {
+        "latitude": 48.8462158,
+        "longitude": 2.3754249
+      },
+      "prixPinte": 6,
+      "prixPinteHappyHour": 4,
+      "startHappyHour": "16:00",
+      "endHappyHour": "02:00"
+    },
+    {
+      "name": "Solluna",
+      "location": {
+        "latitude": 48.84028559999999,
+        "longitude": 2.3353371
+      },
+      "prixPinte": 8,
+      "prixPinteHappyHour": 6,
+      "startHappyHour": "12:00",
+      "endHappyHour": "02:00"
+    },
+    {
+      "name": "Revbar",
+      "location": {
+        "latitude": 48.8462086,
+        "longitude": 2.3785389
+      },
+      "prixPinte": 8.5,
+      "prixPinteHappyHour": 6.5,
+      "startHappyHour": "16:00",
+      "endHappyHour": "00:00"
+    },
+    {
+      "name": "Luppolo (Bieres Artisanales)",
+      "location": {
+        "latitude": 48.88090529999999,
+        "longitude": 2.3373448
+      },
+      "prixPinte": 5.5,
+      "prixPinteHappyHour": 4.5,
+      "startHappyHour": "18:00",
+      "endHappyHour": "23:00"
+    },
+    {
+      "name": "Workshow",
+      "location": {
+        "latitude": 48.8626,
+        "longitude": 2.35184
+      },
+      "prixPinte": 6.9,
+      "prixPinteHappyHour": 3.5,
+      "startHappyHour": "17:00",
+      "endHappyHour": "22:00"
+    },
+    {
+      "name": "The J'Club",
+      "location": {
+        "latitude": 48.8537458,
+        "longitude": 2.3725148
+      },
+      "prixPinte": 10,
+      "prixPinteHappyHour": 10,
+      "startHappyHour": "20:00",
+      "endHappyHour": "01:00"
+    },
+    {
+      "name": "Bistrot Rossini",
+      "location": {
+        "latitude": 48.8732809,
+        "longitude": 2.3391837
+      },
+      "prixPinte": 7,
+      "prixPinteHappyHour": 4.5,
+      "startHappyHour": "16:00",
+      "endHappyHour": "22:00"
+    },
+    {
+      "name": "Bar Du Lycée",
+      "location": {
+        "latitude": 48.8638882,
+        "longitude": 2.3867689
+      },
+      "prixPinte": 6,
+      "prixPinteHappyHour": 4,
+      "startHappyHour": "17:00",
+      "endHappyHour": "02:00"
+    },
+    {
+      "name": "La Brouette",
+      "location": {
+        "latitude": 48.8332536,
+        "longitude": 2.3243794
+      },
+      "prixPinte": 5,
+      "prixPinteHappyHour": 4,
+      "startHappyHour": "16:00",
+      "endHappyHour": "21:00"
+    },
+    {
+      "name": "Monsieur Culbuto",
+      "location": {
+        "latitude": 48.8717036,
+        "longitude": 2.392527400000001
+      },
+      "prixPinte": 5,
+      "prixPinteHappyHour": 4,
+      "startHappyHour": "16:00",
+      "endHappyHour": "22:00"
+    },
+    {
+      "name": "Royal Beaubourg",
+      "location": {
+        "latitude": 48.86497019999999,
+        "longitude": 2.3552343
+      },
+      "prixPinte": 9,
+      "prixPinteHappyHour": 6,
+      "startHappyHour": "14:00",
+      "endHappyHour": "02:00"
+    },
+    {
+      "name": "Corner Café",
+      "location": {
+        "latitude": 48.8698239,
+        "longitude": 2.3346779
+      },
+      "prixPinte": 9,
+      "prixPinteHappyHour": 6,
+      "startHappyHour": "17:00",
+      "endHappyHour": "22:00"
+    },
+    {
+      "name": "Black Sheep",
+      "location": {
+        "latitude": 48.88123770000001,
+        "longitude": 2.3342007
+      },
+      "prixPinte": 6,
+      "prixPinteHappyHour": 5,
+      "startHappyHour": "17:00",
+      "endHappyHour": "02:00"
+    },
+    {
+      "name": "Café des Halles",
+      "location": {
+        "latitude": 48.86309110000001,
+        "longitude": 2.3482678
+      },
+      "prixPinte": 7,
+      "prixPinteHappyHour": 5.5,
+      "startHappyHour": "16:00",
+      "endHappyHour": "22:00"
+    },
+    {
+      "name": "Bistrot La Grange",
+      "location": {
+        "latitude": 48.8508528,
+        "longitude": 2.3485585
+      },
+      "prixPinte": 5.5,
+      "prixPinteHappyHour": 4,
+      "startHappyHour": "17:00",
+      "endHappyHour": "21:00"
+    },
+    {
+      "name": "My Baar",
+      "location": {
+        "latitude": 48.8402757,
+        "longitude": 2.3343018000000484
+      },
+      "prixPinte": 7,
+      "prixPinteHappyHour": 3.5,
+      "startHappyHour": "15:00",
+      "endHappyHour": "01:30"
+    },
+    {
+      "name": "Le Duc",
+      "location": {
+        "latitude": 48.8477,
+        "longitude": 2.34216
+      },
+      "prixPinte": 7,
+      "prixPinteHappyHour": 3.9,
+      "startHappyHour": "17:00",
+      "endHappyHour": "23:00"
+    },
+    {
+      "name": "Le Mélocoton",
+      "location": {
+        "latitude": 48.8471,
+        "longitude": 2.34867
+      },
+      "prixPinte": 5,
+      "prixPinteHappyHour": 3.9,
+      "startHappyHour": "18:00",
+      "endHappyHour": "22:00"
+    },
+    {
+      "name": "Baker Street Pub",
+      "location": {
+        "latitude": 48.84582749999999,
+        "longitude": 2.3539433
+      },
+      "prixPinte": 6.5,
+      "prixPinteHappyHour": 4.5,
+      "startHappyHour": "16:30",
+      "endHappyHour": "21:00"
+    },
+    {
+      "name": "Lutèce Café",
+      "location": {
+        "latitude": 48.85183379999999,
+        "longitude": 2.3983706
+      },
+      "prixPinte": 3.3,
+      "prixPinteHappyHour": null,
+      "startHappyHour": null,
+      "endHappyHour": null
+    },
+    {
+      "name": "Aux Trois Maillets",
+      "location": {
+        "latitude": 48.8615019,
+        "longitude": 2.3488303
+      },
+      "prixPinte": 8,
+      "prixPinteHappyHour": 6,
+      "startHappyHour": "15:00",
+      "endHappyHour": "00:00"
+    },
+    {
+      "name": "L'astrolabe",
+      "location": {
+        "latitude": 48.84421640000001,
+        "longitude": 2.3190071
+      },
+      "prixPinte": 8,
+      "prixPinteHappyHour": 6,
+      "startHappyHour": "18:00",
+      "endHappyHour": "20:00"
+    },
+    {
+      "name": "Troquet Des Glaces",
+      "location": {
+        "latitude": 48.8693807,
+        "longitude": 2.3693749
+      },
+      "prixPinte": 8,
+      "prixPinteHappyHour": 7,
+      "startHappyHour": "17:00",
+      "endHappyHour": "20:00"
+    },
+    {
+      "name": "Freemousse.bar",
+      "location": {
+        "latitude": 48.89054,
+        "longitude": 2.3471591
+      },
+      "prixPinte": 7,
+      "prixPinteHappyHour": null,
+      "startHappyHour": null,
+      "endHappyHour": null
+    },
+    {
+      "name": "Brasserie Lola",
+      "location": {
+        "latitude": 48.8467995,
+        "longitude": 2.2938647
+      },
+      "prixPinte": 7.5,
+      "prixPinteHappyHour": 5,
+      "startHappyHour": "16:00",
+      "endHappyHour": "00:00"
+    },
+    {
+      "name": "Peace & Love",
+      "location": {
+        "latitude": 48.8823,
+        "longitude": 2.36874
+      },
+      "prixPinte": 5.5,
+      "prixPinteHappyHour": 5,
+      "startHappyHour": "17:00",
+      "endHappyHour": "21:00"
+    },
+    {
+      "name": "Chez Jean Claude",
+      "location": {
+        "latitude": 48.8394835,
+        "longitude": 2.3227606
+      },
+      "prixPinte": 6,
+      "prixPinteHappyHour": 4,
+      "startHappyHour": "17:00",
+      "endHappyHour": "20:00"
+    },
+    {
+      "name": "Le Little",
+      "location": {
+        "latitude": 48.8667334,
+        "longitude": 2.3660358
+      },
+      "prixPinte": 7.5,
+      "prixPinteHappyHour": 5,
+      "startHappyHour": "17:00",
+      "endHappyHour": "02:00"
+    },
+    {
+      "name": "Les Blouses Blanches",
+      "location": {
+        "latitude": 48.8500391,
+        "longitude": 2.3830485
+      },
+      "prixPinte": 7.5,
+      "prixPinteHappyHour": 6.5,
+      "startHappyHour": "15:00",
+      "endHappyHour": "00:00"
+    },
+    {
+      "name": "Les Copains Bar",
+      "location": {
+        "latitude": 48.8745417,
+        "longitude": 2.3539478
+      },
+      "prixPinte": 7.5,
+      "prixPinteHappyHour": 5,
+      "startHappyHour": "17:00",
+      "endHappyHour": "00:00"
+    },
+    {
+      "name": "Le Dream Cafe",
+      "location": {
+        "latitude": 48.8770414,
+        "longitude": 2.3397126
+      },
+      "prixPinte": 6,
+      "prixPinteHappyHour": 3.5,
+      "startHappyHour": "17:00",
+      "endHappyHour": "23:00"
+    },
+    {
+      "name": "La Bodega",
+      "location": {
+        "latitude": 48.847,
+        "longitude": 2.34876
+      },
+      "prixPinte": 5,
+      "prixPinteHappyHour": 3.9,
+      "startHappyHour": "18:00",
+      "endHappyHour": "21:00"
+    },
+    {
+      "name": "Brasserie Laura",
+      "location": {
+        "latitude": 48.837343,
+        "longitude": 2.305845
+      },
+      "prixPinte": 8,
+      "prixPinteHappyHour": 7,
+      "startHappyHour": "18:00",
+      "endHappyHour": "02:00"
+    },
+    {
+      "name": "Le Bistro Des Galopins",
+      "location": {
+        "latitude": 48.8819476,
+        "longitude": 2.3284121
+      },
+      "prixPinte": 5.5,
+      "prixPinteHappyHour": 4,
+      "startHappyHour": "17:00",
+      "endHappyHour": "21:00"
+    },
+    {
+      "name": "Le Beef Marais",
+      "location": {
+        "latitude": 48.85781430000001,
+        "longitude": 2.3580078
+      },
+      "prixPinte": 8,
+      "prixPinteHappyHour": null,
+      "startHappyHour": "08:00",
+      "endHappyHour": "06:00"
+    },
+    {
+      "name": "Le Carolus",
+      "location": {
+        "latitude": 48.88457469999999,
+        "longitude": 2.3287547
+      },
+      "prixPinte": 9.6,
+      "prixPinteHappyHour": 4.99,
+      "startHappyHour": "15:00",
+      "endHappyHour": "00:00"
+    },
+    {
+      "name": "Mez Beer",
+      "location": {
+        "latitude": 48.83961610000001,
+        "longitude": 2.3228683
+      },
+      "prixPinte": 7,
+      "prixPinteHappyHour": 6,
+      "startHappyHour": "17:00",
+      "endHappyHour": "21:00"
+    },
+    {
+      "name": "Au P'Tit Clin D'Oeil",
+      "location": {
+        "latitude": 48.8467689,
+        "longitude": 2.3844581
+      },
+      "prixPinte": 7,
+      "prixPinteHappyHour": 6.5,
+      "startHappyHour": "15:00",
+      "endHappyHour": "00:00"
+    },
+    {
+      "name": "Attitude Café",
+      "location": {
+        "latitude": 48.8618141,
+        "longitude": 2.3730746
+      },
+      "prixPinte": 7,
+      "prixPinteHappyHour": 6,
+      "startHappyHour": "15:00",
+      "endHappyHour": "02:00"
+    },
+    {
+      "name": "L'Assassin",
+      "location": {
+        "latitude": 48.8687993,
+        "longitude": 2.3800324
+      },
+      "prixPinte": 5.5,
+      "prixPinteHappyHour": 4,
+      "startHappyHour": "17:00",
+      "endHappyHour": "23:00"
+    },
+    {
+      "name": "Little Temple Bar",
+      "location": {
+        "latitude": 48.8522067,
+        "longitude": 2.334391299999993
+      },
+      "prixPinte": 8,
+      "prixPinteHappyHour": 6,
+      "startHappyHour": "17:00",
+      "endHappyHour": "20:00"
+    },
+    {
+      "name": "Café Millésimes",
+      "location": {
+        "latitude": 48.8403928,
+        "longitude": 2.3992677
+      },
+      "prixPinte": 6,
+      "prixPinteHappyHour": 4,
+      "startHappyHour": "16:00",
+      "endHappyHour": "00:00"
+    },
+    {
+      "name": "Le Royal Bergère",
+      "location": {
+        "latitude": 48.872519,
+        "longitude": 2.344763399999999
+      },
+      "prixPinte": 7,
+      "prixPinteHappyHour": 6,
+      "startHappyHour": "14:00",
+      "endHappyHour": "22:00"
+    },
+    {
+      "name": "Chez Zaza",
+      "location": {
+        "latitude": 48.86143440000001,
+        "longitude": 2.349333
+      },
+      "prixPinte": 8,
+      "prixPinteHappyHour": 6.5,
+      "startHappyHour": "14:00",
+      "endHappyHour": "00:00"
+    },
+    {
+      "name": "Le Sophia",
+      "location": {
+        "latitude": 48.8407147,
+        "longitude": 2.35379
+      },
+      "prixPinte": 6,
+      "prixPinteHappyHour": 4.5,
+      "startHappyHour": "17:00",
+      "endHappyHour": "22:00"
+    },
+    {
+      "name": "L'Exode",
+      "location": {
+        "latitude": 48.871854,
+        "longitude": 2.3554365
+      },
+      "prixPinte": 6,
+      "prixPinteHappyHour": 5,
+      "startHappyHour": "18:00",
+      "endHappyHour": "01:30"
+    },
+    {
+      "name": "Les Justes",
+      "location": {
+        "latitude": 48.8812524,
+        "longitude": 2.3373654
+      },
+      "prixPinte": 8,
+      "prixPinteHappyHour": 7,
+      "startHappyHour": "18:00",
+      "endHappyHour": "22:30"
+    },
+    {
+      "name": "Le Tonnerre",
+      "location": {
+        "latitude": 48.8356945,
+        "longitude": 2.3226669
+      },
+      "prixPinte": 5,
+      "prixPinteHappyHour": 4,
+      "startHappyHour": "17:00",
+      "endHappyHour": "20:00"
+    },
+    {
+      "name": "Café Du Theatre Mathurins",
+      "location": {
+        "latitude": 48.8730979,
+        "longitude": 2.3256301
+      },
+      "prixPinte": 6.5,
+      "prixPinteHappyHour": 5,
+      "startHappyHour": "21:00",
+      "endHappyHour": "23:00"
+    },
+    {
+      "name": "Le Petit Poney",
+      "location": {
+        "latitude": 48.8659162,
+        "longitude": 2.3487589
+      },
+      "prixPinte": 7.5,
+      "prixPinteHappyHour": 5,
+      "startHappyHour": "18:00",
+      "endHappyHour": "02:00"
+    },
+    {
+      "name": "Prost",
+      "location": {
+        "latitude": 48.8540427,
+        "longitude": 2.3685614
+      },
+      "prixPinte": 6.5,
+      "prixPinteHappyHour": 5,
+      "startHappyHour": "12:00",
+      "endHappyHour": "21:00"
+    },
+    {
+      "name": "Le Code Bar",
+      "location": {
+        "latitude": 48.86971279999999,
+        "longitude": 2.3630824
+      },
+      "prixPinte": 7.5,
+      "prixPinteHappyHour": 6.5,
+      "startHappyHour": "16:00",
+      "endHappyHour": "22:00"
+    },
+    {
+      "name": "Pelleport Café - Bar paris 20",
+      "location": {
+        "latitude": 48.8685807,
+        "longitude": 2.4015168
+      },
+      "prixPinte": 5,
+      "prixPinteHappyHour": 3.9,
+      "startHappyHour": "16:00",
+      "endHappyHour": "00:00"
+    },
+    {
+      "name": "Be-Jazzy",
+      "location": {
+        "latitude": 48.8988437,
+        "longitude": 2.3367842
+      },
+      "prixPinte": 6.5,
+      "prixPinteHappyHour": 5,
+      "startHappyHour": "16:00",
+      "endHappyHour": "20:00"
+    },
+    {
+      "name": "Velvet Bar",
+      "location": {
+        "latitude": 48.8607301,
+        "longitude": 2.3454016
+      },
+      "prixPinte": 10,
+      "prixPinteHappyHour": 5,
+      "startHappyHour": "18:00",
+      "endHappyHour": "22:00"
+    },
+    {
+      "name": "Moxy Paris Bastille",
+      "location": {
+        "latitude": 48.8575434,
+        "longitude": 2.3698497
+      },
+      "prixPinte": 7,
+      "prixPinteHappyHour": 5,
+      "startHappyHour": "18:00",
+      "endHappyHour": "22:00"
+    },
+    {
+      "name": "Le Katre",
+      "location": {
+        "latitude": 48.88283209999999,
+        "longitude": 2.3375017
+      },
+      "prixPinte": 7,
+      "prixPinteHappyHour": 5.5,
+      "startHappyHour": "17:00",
+      "endHappyHour": "22:00"
+    },
+    {
+      "name": "Balou - Paris 10",
+      "location": {
+        "latitude": 48.8816848,
+        "longitude": 2.3644755
+      },
+      "prixPinte": 7.5,
+      "prixPinteHappyHour": 6.5,
+      "startHappyHour": "16:00",
+      "endHappyHour": "02:00"
+    },
+    {
+      "name": "Osmoz Café",
+      "location": {
+        "latitude": 48.83660870000001,
+        "longitude": 2.3206522
+      },
+      "prixPinte": 7,
+      "prixPinteHappyHour": 5,
+      "startHappyHour": "12:00",
+      "endHappyHour": "20:00"
+    },
+    {
+      "name": "Bistrot XVIII",
+      "location": {
+        "latitude": 48.8924815,
+        "longitude": 2.3422265
+      },
+      "prixPinte": 6.5,
+      "prixPinteHappyHour": 4,
+      "startHappyHour": "11:00",
+      "endHappyHour": "23:30"
+    },
+    {
+      "name": "L'art Triste",
+      "location": {
+        "latitude": 48.8393183,
+        "longitude": 2.3046558
+      },
+      "prixPinte": 7.5,
+      "prixPinteHappyHour": 5,
+      "startHappyHour": "16:00",
+      "endHappyHour": "00:00"
+    },
+    {
+      "name": "Drama",
+      "location": {
+        "latitude": 48.87208649999999,
+        "longitude": 2.3481065
+      },
+      "prixPinte": 7,
+      "prixPinteHappyHour": 5,
+      "startHappyHour": "18:00",
+      "endHappyHour": "21:00"
+    },
+    {
+      "name": "CHEZ MAMAN",
+      "location": {
+        "latitude": 48.8850482,
+        "longitude": 2.3797194
+      },
+      "prixPinte": 7.9,
+      "prixPinteHappyHour": 5,
+      "startHappyHour": "17:00",
+      "endHappyHour": "00:00"
+    },
+    {
+      "name": "Chez Loulou Et Juliette",
+      "location": {
+        "latitude": 48.8531759,
+        "longitude": 2.3974215
+      },
+      "prixPinte": 3.3,
+      "prixPinteHappyHour": null,
+      "startHappyHour": null,
+      "endHappyHour": null
+    },
+    {
+      "name": "Le Grand B",
+      "location": {
+        "latitude": 48.87007699999999,
+        "longitude": 2.3498983
+      },
+      "prixPinte": 6.2,
+      "prixPinteHappyHour": 5.2,
+      "startHappyHour": "16:00",
+      "endHappyHour": "02:00"
+    },
+    {
+      "name": "Les Pipelettes du Boulevard",
+      "location": {
+        "latitude": 48.8707849,
+        "longitude": 2.3460594
+      },
+      "prixPinte": 7,
+      "prixPinteHappyHour": 6,
+      "startHappyHour": "16:00",
+      "endHappyHour": "00:00"
+    },
+    {
+      "name": "Le Brigadier",
+      "location": {
+        "latitude": 48.87760489999999,
+        "longitude": 2.3321875
+      },
+      "prixPinte": 9,
+      "prixPinteHappyHour": 7,
+      "startHappyHour": "17:00",
+      "endHappyHour": "02:00"
+    },
+    {
+      "name": "Calle Loca",
+      "location": {
+        "latitude": 48.8834688,
+        "longitude": 2.3317773
+      },
+      "prixPinte": 8,
+      "prixPinteHappyHour": 6,
+      "startHappyHour": "19:30",
+      "endHappyHour": "23:00"
+    },
+    {
+      "name": "Le Choubichou",
+      "location": {
+        "latitude": 48.8634603,
+        "longitude": 2.348083299999999
+      },
+      "prixPinte": 6,
+      "prixPinteHappyHour": 5,
+      "startHappyHour": "16:00",
+      "endHappyHour": "02:00"
+    },
+    {
+      "name": "L'embouteillage",
+      "location": {
+        "latitude": 48.8663669,
+        "longitude": 2.3713643
+      },
+      "prixPinte": 7,
+      "prixPinteHappyHour": 5,
+      "startHappyHour": "17:00",
+      "endHappyHour": "22:00"
+    },
+    {
+      "name": "LE40BAR",
+      "location": {
+        "latitude": 48.8708519,
+        "longitude": 2.3486462
+      },
+      "prixPinte": 7,
+      "prixPinteHappyHour": null,
+      "startHappyHour": "16:00",
+      "endHappyHour": "02:00"
+    },
+    {
+      "name": "Beaucour à la folie",
+      "location": {
+        "latitude": 48.87679809999999,
+        "longitude": 2.301493
+      },
+      "prixPinte": 9,
+      "prixPinteHappyHour": 7,
+      "startHappyHour": "17:00",
+      "endHappyHour": "02:00"
+    },
+    {
+      "name": "Bistrot Jad",
+      "location": {
+        "latitude": 48.87040999999999,
+        "longitude": 2.348495
+      },
+      "prixPinte": 7,
+      "prixPinteHappyHour": 4.9,
+      "startHappyHour": "16:00",
+      "endHappyHour": "02:00"
+    },
+    {
+      "name": "Plan K",
+      "location": {
+        "latitude": 48.881189,
+        "longitude": 2.3447604
+      },
+      "prixPinte": 8.5,
+      "prixPinteHappyHour": 7,
+      "startHappyHour": "17:00",
+      "endHappyHour": "00:00"
+    },
+    {
+      "name": "La Môme",
+      "location": {
+        "latitude": 48.8729268,
+        "longitude": 2.3794536
+      },
+      "prixPinte": 4,
+      "prixPinteHappyHour": 4,
+      "startHappyHour": "15:00",
+      "endHappyHour": "02:00"
+    },
+    {
+      "name": "Le Re-Montant Bar",
+      "location": {
+        "latitude": 48.8698178,
+        "longitude": 2.3943032
+      },
+      "prixPinte": 6,
+      "prixPinteHappyHour": 5,
+      "startHappyHour": "16:00",
+      "endHappyHour": "00:00"
+    },
+    {
+      "name": "La Fiorentina",
+      "location": {
+        "latitude": 48.8609772,
+        "longitude": 2.37839
+      },
+      "prixPinte": 4,
+      "prixPinteHappyHour": 4,
+      "startHappyHour": "15:00",
+      "endHappyHour": "02:00"
+    },
+    {
+      "name": "Le Saint Cyr",
+      "location": {
+        "latitude": 48.8595268,
+        "longitude": 2.4405427
+      },
+      "prixPinte": 6,
+      "prixPinteHappyHour": 5,
+      "startHappyHour": "10:00",
+      "endHappyHour": "23:00"
+    },
+    {
+      "name": "RPR - Le Repaire de Charonne",
+      "location": {
+        "latitude": 48.8547277,
+        "longitude": 2.3859544
+      },
+      "prixPinte": 8,
+      "prixPinteHappyHour": 6,
+      "startHappyHour": "18:00",
+      "endHappyHour": "22:00"
+    },
+    {
+      "name": "Le Mistral - Pyrénées",
+      "location": {
+        "latitude": 48.8738107,
+        "longitude": 2.3856918
+      },
+      "prixPinte": 8.8,
+      "prixPinteHappyHour": 7,
+      "startHappyHour": "16:00",
+      "endHappyHour": "21:00"
+    },
+    {
+      "name": "Le Colverre",
+      "location": {
+        "latitude": 48.85040440000001,
+        "longitude": 2.389540600000001
+      },
+      "prixPinte": 6,
+      "prixPinteHappyHour": 5,
+      "startHappyHour": "17:00",
+      "endHappyHour": "20:00"
+    },
+    {
+      "name": "Les Nouveaux Sauvages - Pl Réunion",
+      "location": {
+        "latitude": 48.855855,
+        "longitude": 2.400527
+      },
+      "prixPinte": 5,
+      "prixPinteHappyHour": 4.5,
+      "startHappyHour": "15:00",
+      "endHappyHour": "00:00"
+    },
+    {
+      "name": "Le Carignan",
+      "location": {
+        "latitude": 48.8825764,
+        "longitude": 2.3413904
+      },
+      "prixPinte": 9,
+      "prixPinteHappyHour": 6.5,
+      "startHappyHour": "15:00",
+      "endHappyHour": "02:00"
+    },
+    {
+      "name": "La Casa De Los Franceses",
+      "location": {
+        "latitude": 48.8807699,
+        "longitude": 2.3132906
+      },
+      "prixPinte": 6,
+      "prixPinteHappyHour": 6,
+      "startHappyHour": "17:00",
+      "endHappyHour": "20:00"
+    },
+    {
+      "name": "Pappasito's",
+      "location": {
+        "latitude": 48.8842765,
+        "longitude": 2.3398684
+      },
+      "prixPinte": 8,
+      "prixPinteHappyHour": 6.5,
+      "startHappyHour": "15:00",
+      "endHappyHour": "20:00"
+    },
+    {
+      "name": "Occo",
+      "location": {
+        "latitude": 48.85345419999999,
+        "longitude": 2.3386446
+      },
+      "prixPinte": 8,
+      "prixPinteHappyHour": 8,
+      "startHappyHour": "17:00",
+      "endHappyHour": "22:00"
+    },
+    {
+      "name": "Monaco",
+      "location": {
+        "latitude": 48.8545032,
+        "longitude": 2.3728673
+      },
+      "prixPinte": 5.5,
+      "prixPinteHappyHour": 4,
+      "startHappyHour": "16:00",
+      "endHappyHour": "23:00"
+    },
+    {
+      "name": "De Gaite De Coeur  DGDC",
+      "location": {
+        "latitude": 48.8392183,
+        "longitude": 2.3234645
+      },
+      "prixPinte": 9,
+      "prixPinteHappyHour": 7,
+      "startHappyHour": "17:00",
+      "endHappyHour": "02:00"
+    },
+    {
+      "name": "Le Lutin",
+      "location": {
+        "latitude": 48.87986129999999,
+        "longitude": 2.295112199999999
+      },
+      "prixPinte": 8.5,
+      "prixPinteHappyHour": 6,
+      "startHappyHour": "16:00",
+      "endHappyHour": "20:00"
+    },
+    {
+      "name": "L'Entracte Gaité",
+      "location": {
+        "latitude": 48.8394159,
+        "longitude": 2.3231567
+      },
+      "prixPinte": 7,
+      "prixPinteHappyHour": 6,
+      "startHappyHour": "17:00",
+      "endHappyHour": "02:00"
+    },
+    {
+      "name": "Pigallerie",
+      "location": {
+        "latitude": 48.8827677,
+        "longitude": 2.3368673
+      },
+      "prixPinte": 7.5,
+      "prixPinteHappyHour": 7.5,
+      "startHappyHour": "17:00",
+      "endHappyHour": "20:00"
+    },
+    {
+      "name": "Le Diplomate",
+      "location": {
+        "latitude": 48.8829831,
+        "longitude": 2.34707
+      },
+      "prixPinte": 8.2,
+      "prixPinteHappyHour": 5.9,
+      "startHappyHour": "15:00",
+      "endHappyHour": "21:00"
+    },
+    {
+      "name": "Le Saloon Far West",
+      "location": {
+        "latitude": 48.8507948,
+        "longitude": 2.3840419
+      },
+      "prixPinte": 8,
+      "prixPinteHappyHour": 6,
+      "startHappyHour": "17:00",
+      "endHappyHour": "20:00"
+    },
+    {
+      "name": "Solluna Faidherbe",
+      "location": {
+        "latitude": 48.8501169,
+        "longitude": 2.3857689
+      },
+      "prixPinte": 4,
+      "prixPinteHappyHour": 4,
+      "startHappyHour": "16:00",
+      "endHappyHour": "02:00"
+    },
+    {
+      "name": "Le Boucl'Art",
+      "location": {
+        "latitude": 48.8528206,
+        "longitude": 2.4062653
+      },
+      "prixPinte": 6,
+      "prixPinteHappyHour": null,
+      "startHappyHour": null,
+      "endHappyHour": null
+    },
+    {
+      "name": "Royal Bar Des Amis",
+      "location": {
+        "latitude": 48.8646498,
+        "longitude": 2.401597
+      },
+      "prixPinte": 3.5,
+      "prixPinteHappyHour": null,
+      "startHappyHour": null,
+      "endHappyHour": null
+    },
+    {
+      "name": "Mila Club Bastille",
+      "location": {
+        "latitude": 48.8539471,
+        "longitude": 2.3721561
+      },
+      "prixPinte": 7.5,
+      "prixPinteHappyHour": null,
+      "startHappyHour": null,
+      "endHappyHour": null
+    },
+    {
+      "name": "Liam's Bar",
+      "location": {
+        "latitude": 48.87007699999999,
+        "longitude": 2.3498983
+      },
+      "prixPinte": 6,
+      "prixPinteHappyHour": 5,
+      "startHappyHour": "18:00",
+      "endHappyHour": "02:00"
+    },
+    {
+      "name": "Café Des Arts",
+      "location": {
+        "latitude": 48.8514227,
+        "longitude": 2.3979775
+      },
+      "prixPinte": 7,
+      "prixPinteHappyHour": 3.5,
+      "startHappyHour": "16:00",
+      "endHappyHour": "00:00"
+    },
+    {
+      "name": "Les Bavards Du Boulevard",
+      "location": {
+        "latitude": 48.86431779999999,
+        "longitude": 2.3863214
+      },
+      "prixPinte": 5,
+      "prixPinteHappyHour": 3.5,
+      "startHappyHour": "16:00",
+      "endHappyHour": "00:00"
+    },
+    {
+      "name": "L'entre 2",
+      "location": {
+        "latitude": 48.8852898,
+        "longitude": 2.3804577
+      },
+      "prixPinte": 5.5,
+      "prixPinteHappyHour": 2.9,
+      "startHappyHour": "16:00",
+      "endHappyHour": "00:00"
+    },
+    {
+      "name": "Bar Café Hébert",
+      "location": {
+        "latitude": 48.8931255,
+        "longitude": 2.363354600000001
+      },
+      "prixPinte": 6.5,
+      "prixPinteHappyHour": 5,
+      "startHappyHour": "16:00",
+      "endHappyHour": "02:00"
+    },
+    {
+      "name": "Le Dijon Bercy",
+      "location": {
+        "latitude": 48.8357864,
+        "longitude": 2.3857924
+      },
+      "prixPinte": 8,
+      "prixPinteHappyHour": 5,
+      "startHappyHour": "16:00",
+      "endHappyHour": "22:00"
+    },
+    {
+      "name": "L'étoile Paris 19",
+      "location": {
+        "latitude": 48.8868747,
+        "longitude": 2.386687
+      },
+      "prixPinte": 6,
+      "prixPinteHappyHour": 4,
+      "startHappyHour": "18:00",
+      "endHappyHour": "00:00"
+    },
+    {
+      "name": "Le Refuge",
+      "location": {
+        "latitude": 48.8847079,
+        "longitude": 2.3698529
+      },
+      "prixPinte": 7,
+      "prixPinteHappyHour": null,
+      "startHappyHour": null,
+      "endHappyHour": null
+    },
+    {
+      "name": "Tara-tata",
+      "location": {
+        "latitude": 48.8621276,
+        "longitude": 2.3421223
+      },
+      "prixPinte": 6,
+      "prixPinteHappyHour": 6,
+      "startHappyHour": "16:00",
+      "endHappyHour": "00:00"
+    },
+    {
+      "name": "Twins",
+      "location": {
+        "latitude": 48.8627645,
+        "longitude": 2.3481171
+      },
+      "prixPinte": 9,
+      "prixPinteHappyHour": 8,
+      "startHappyHour": "16:00",
+      "endHappyHour": "02:00"
+    },
+    {
+      "name": "Chez Papa - 20 Eme Gambetta",
+      "location": {
+        "latitude": 48.8656449,
+        "longitude": 2.3988567
+      },
+      "prixPinte": 7.9,
+      "prixPinteHappyHour": 6,
+      "startHappyHour": "17:00",
+      "endHappyHour": "00:00"
+    },
+    {
+      "name": "La Baze",
+      "location": {
+        "latitude": 48.87950250000001,
+        "longitude": 2.3423981
+      },
+      "prixPinte": 7.5,
+      "prixPinteHappyHour": null,
+      "startHappyHour": null,
+      "endHappyHour": null
+    },
+    {
+      "name": "Cicciolina",
+      "location": {
+        "latitude": 48.863451,
+        "longitude": 2.3487855
+      },
+      "prixPinte": 6,
+      "prixPinteHappyHour": 5,
+      "startHappyHour": "16:00",
+      "endHappyHour": "02:00"
+    },
+    {
+      "name": "Tesoro D'Italia - Saint-Marcel",
+      "location": {
+        "latitude": 48.837332,
+        "longitude": 2.3544191
+      },
+      "prixPinte": 7,
+      "prixPinteHappyHour": 5.5,
+      "startHappyHour": "17:30",
+      "endHappyHour": "21:00"
+    },
+    {
+      "name": "Bistrot Smiley",
+      "location": {
+        "latitude": 48.8792713,
+        "longitude": 2.3397599
+      },
+      "prixPinte": 7.5,
+      "prixPinteHappyHour": 6,
+      "startHappyHour": "17:00",
+      "endHappyHour": "23:00"
+    },
+    {
+      "name": "Le Subliminal 82",
+      "location": {
+        "latitude": 48.8794643,
+        "longitude": 2.3490753
+      },
+      "prixPinte": 6,
+      "prixPinteHappyHour": 4.5,
+      "startHappyHour": "17:00",
+      "endHappyHour": "23:00"
+    },
+    {
+      "name": "Cangting",
+      "location": {
+        "latitude": 48.89219989999999,
+        "longitude": 2.3168429
+      },
+      "prixPinte": 6,
+      "prixPinteHappyHour": 4,
+      "startHappyHour": "17:00",
+      "endHappyHour": "20:00"
+    },
+    {
+      "name": "Le Passage",
+      "location": {
+        "latitude": 48.87255,
+        "longitude": 2.3514087
+      },
+      "prixPinte": 7,
+      "prixPinteHappyHour": 5,
+      "startHappyHour": "12:00",
+      "endHappyHour": "22:00"
+    },
+    {
+      "name": "Le Saint Georges",
+      "location": {
+        "latitude": 48.8792111,
+        "longitude": 2.3487554
+      },
+      "prixPinte": 4.5,
+      "prixPinteHappyHour": 4.5,
+      "startHappyHour": "18:00",
+      "endHappyHour": "02:00"
+    },
+    {
+      "name": "Le Bouquet",
+      "location": {
+        "latitude": 48.8329509,
+        "longitude": 2.3161058
+      },
+      "prixPinte": 6,
+      "prixPinteHappyHour": 4,
+      "startHappyHour": "17:00",
+      "endHappyHour": "02:00"
+    },
+    {
+      "name": "Café De l'Europe - The Feel",
+      "location": {
+        "latitude": 48.8492602,
+        "longitude": 2.4090488
+      },
+      "prixPinte": 5.4,
+      "prixPinteHappyHour": null,
+      "startHappyHour": "18:00",
+      "endHappyHour": "02:00"
+    },
+    {
+      "name": "Café La Casa",
+      "location": {
+        "latitude": 48.883292,
+        "longitude": 2.3190248
+      },
+      "prixPinte": 6,
+      "prixPinteHappyHour": 4,
+      "startHappyHour": "17:00",
+      "endHappyHour": "00:00"
+    },
+    {
+      "name": "Café Porte Montmartre",
+      "location": {
+        "latitude": 48.8976311,
+        "longitude": 2.3380384
+      },
+      "prixPinte": 7,
+      "prixPinteHappyHour": 3.9,
+      "startHappyHour": "17:00",
+      "endHappyHour": "00:00"
+    },
+    {
+      "name": "Coeur Fou",
+      "location": {
+        "latitude": 48.8659854,
+        "longitude": 2.3444744
+      },
+      "prixPinte": 6.5,
+      "prixPinteHappyHour": 6,
+      "startHappyHour": "16:00",
+      "endHappyHour": "23:00"
+    },
+    {
+      "name": "Laroye Bar",
+      "location": {
+        "latitude": 48.8796299,
+        "longitude": 2.3432974
+      },
+      "prixPinte": 7,
+      "prixPinteHappyHour": 3.5,
+      "startHappyHour": "17:00",
+      "endHappyHour": "23:00"
+    },
+    {
+      "name": "Le Nouveau Brooklyn",
+      "location": {
+        "latitude": 48.8135628,
+        "longitude": 2.3828035
+      },
+      "prixPinte": 5,
+      "prixPinteHappyHour": 4,
+      "startHappyHour": "17:00",
+      "endHappyHour": "00:00"
+    },
+    {
+      "name": "Le Social Bar",
+      "location": {
+        "latitude": 48.8417528,
+        "longitude": 2.3753605
+      },
+      "prixPinte": 9,
+      "prixPinteHappyHour": null,
+      "startHappyHour": "17:00",
+      "endHappyHour": "20:00"
+    },
+    {
+      "name": "Bistro Cobalt",
+      "location": {
+        "latitude": 48.83563239999999,
+        "longitude": 2.32339
+      },
+      "prixPinte": 6,
+      "prixPinteHappyHour": 4,
+      "startHappyHour": "16:00",
+      "endHappyHour": "21:00"
+    },
+    {
+      "name": "Le Nova",
+      "location": {
+        "latitude": 48.8884872,
+        "longitude": 2.3242579
+      },
+      "prixPinte": 4,
+      "prixPinteHappyHour": 3.5,
+      "startHappyHour": "17:00",
+      "endHappyHour": "23:00"
+    },
+    {
+      "name": "Marlusse et Lapin",
+      "location": {
+        "latitude": 48.8837,
+        "longitude": 2.33676
+      },
+      "prixPinte": 5.5,
+      "prixPinteHappyHour": 5,
+      "startHappyHour": "18:00",
+      "endHappyHour": "02:00"
+    },
+    {
+      "name": "Monsieur Le Zinc - Lille",
+      "location": {
+        "latitude": 50.6328177,
+        "longitude": 3.0537225
+      },
+      "prixPinte": 5,
+      "prixPinteHappyHour": 4,
+      "startHappyHour": "18:00",
+      "endHappyHour": "21:00"
+    },
+    {
+      "name": "Zango",
+      "location": {
+        "latitude": 48.8632402,
+        "longitude": 2.348703999999999
+      },
+      "prixPinte": 7,
+      "prixPinteHappyHour": 5,
+      "startHappyHour": "17:00",
+      "endHappyHour": "02:00"
+    },
+    {
+      "name": "Sputnik Bar",
+      "location": {
+        "latitude": 44.8378578,
+        "longitude": -0.5715553
+      },
+      "prixPinte": 6,
+      "prixPinteHappyHour": 4,
+      "startHappyHour": "18:00",
+      "endHappyHour": "22:00"
+    },
+    {
+      "name": "Copaintes",
+      "location": {
+        "latitude": 48.8707224,
+        "longitude": 2.34981
+      },
+      "prixPinte": 7,
+      "prixPinteHappyHour": 6,
+      "startHappyHour": "17:00",
+      "endHappyHour": "02:00"
+    },
+    {
+      "name": "les nouveaux sauvages",
+      "location": {
+        "latitude": 48.8581175,
+        "longitude": 2.437369
+      },
+      "prixPinte": 4.5,
+      "prixPinteHappyHour": null,
+      "startHappyHour": null,
+      "endHappyHour": null
+    },
+    {
+      "name": "L'instant",
+      "location": {
+        "latitude": 48.8881153,
+        "longitude": 2.3481758
+      },
+      "prixPinte": 6,
+      "prixPinteHappyHour": null,
+      "startHappyHour": "15:00",
+      "endHappyHour": "22:00"
+    },
+    {
+      "name": "L’Atelier Suffren",
+      "location": {
+        "latitude": 48.849106,
+        "longitude": 2.3037963
+      },
+      "prixPinte": 6,
+      "prixPinteHappyHour": 5,
+      "startHappyHour": "16:00",
+      "endHappyHour": "20:00"
+    },
+    {
+      "name": "Les Cabaretiers",
+      "location": {
+        "latitude": 48.2959736,
+        "longitude": 4.0724985
+      },
+      "prixPinte": 6,
+      "prixPinteHappyHour": null,
+      "startHappyHour": null,
+      "endHappyHour": null
+    },
+    {
+      "name": "Café des Arts 05",
+      "location": {
+        "latitude": 48.8439599,
+        "longitude": 2.3515726
+      },
+      "prixPinte": 6.5,
+      "prixPinteHappyHour": null,
+      "startHappyHour": null,
+      "endHappyHour": null
+    },
+    {
+      "name": "Café Du Trône",
+      "location": {
+        "latitude": 48.8486427,
+        "longitude": 2.3979051
+      },
+      "prixPinte": 6.5,
+      "prixPinteHappyHour": 4.5,
+      "startHappyHour": "16:00",
+      "endHappyHour": "23:00"
+    },
+    {
+      "name": "Café Des Arts",
+      "location": {
+        "latitude": 48.8446442,
+        "longitude": 2.3493218
+      },
+      "prixPinte": 6,
+      "prixPinteHappyHour": 4.5,
+      "startHappyHour": "18:00",
+      "endHappyHour": "21:00"
+    },
+    {
+      "name": "Arlette Café",
+      "location": {
+        "latitude": 47.2053161,
+        "longitude": -1.5563453
+      },
+      "prixPinte": 4,
+      "prixPinteHappyHour": null,
+      "startHappyHour": null,
+      "endHappyHour": null
+    },
+    {
+      "name": "L'Abbaye Pub",
+      "location": {
+        "latitude": 45.7679132,
+        "longitude": 4.8338204
+      },
+      "prixPinte": 5,
+      "prixPinteHappyHour": null,
+      "startHappyHour": null,
+      "endHappyHour": null
+    },
+    {
+      "name": "Le Plein Sud",
+      "location": {
+        "latitude": 45.7629604,
+        "longitude": 4.833020299999999
+      },
+      "prixPinte": 7,
+      "prixPinteHappyHour": null,
+      "startHappyHour": null,
+      "endHappyHour": null
+    },
+    {
+      "name": "Le Bosquet",
+      "location": {
+        "latitude": 45.75368239999999,
+        "longitude": 4.840197899999999
+      },
+      "prixPinte": 5.5,
+      "prixPinteHappyHour": null,
+      "startHappyHour": null,
+      "endHappyHour": null
+    },
+    {
+      "name": "400 Coups",
+      "location": {
+        "latitude": 48.1086819,
+        "longitude": -1.6993285
+      },
+      "prixPinte": 5,
+      "prixPinteHappyHour": null,
+      "startHappyHour": null,
+      "endHappyHour": null
+    },
+    {
+      "name": "Little Délirum Café Rennes",
+      "location": {
+        "latitude": 48.1062007,
+        "longitude": -1.6779555
+      },
+      "prixPinte": 5.5,
+      "prixPinteHappyHour": null,
+      "startHappyHour": null,
+      "endHappyHour": null
+    },
+    {
+      "name": "L'Amphi Quai de Seine",
+      "location": {
+        "latitude": 48.858051,
+        "longitude": 2.3459609
+      },
+      "prixPinte": 8,
+      "prixPinteHappyHour": null,
+      "startHappyHour": "16:00",
+      "endHappyHour": "19:00"
+    },
+    {
+      "name": "Chope-Moi Pigalle",
+      "location": {
+        "latitude": 48.882838,
+        "longitude": 2.336793
+      },
+      "prixPinte": 5,
+      "prixPinteHappyHour": null,
+      "startHappyHour": null,
+      "endHappyHour": null
+    },
+    {
+      "name": "Chez Sab",
+      "location": {
+        "latitude": 48.8767918,
+        "longitude": 2.3421781
+      },
+      "prixPinte": 7.5,
+      "prixPinteHappyHour": 6,
+      "startHappyHour": "16:00",
+      "endHappyHour": "23:00"
+    },
+    {
+      "name": "L'Esprit Toulousain",
+      "location": {
+        "latitude": 43.5917093,
+        "longitude": 1.4335405
+      },
+      "prixPinte": 6.9,
+      "prixPinteHappyHour": null,
+      "startHappyHour": null,
+      "endHappyHour": null
+    },
+    {
+      "name": "Bistro 12",
+      "location": {
+        "latitude": 48.8462065,
+        "longitude": 2.3952147
+      },
+      "prixPinte": 7.5,
+      "prixPinteHappyHour": 5.5,
+      "startHappyHour": "16:00",
+      "endHappyHour": "02:00"
+    },
+    {
+      "name": "Le Café Du Village - Angers",
+      "location": {
+        "latitude": 47.492526,
+        "longitude": -0.55182
+      },
+      "prixPinte": 7,
+      "prixPinteHappyHour": 5,
+      "startHappyHour": "17:00",
+      "endHappyHour": "21:30"
+    },
+    {
+      "name": "Le Bouquet Neuilly",
+      "location": {
+        "latitude": 48.8830184,
+        "longitude": 2.2646751
+      },
+      "prixPinte": 9.5,
+      "prixPinteHappyHour": 5.5,
+      "startHappyHour": "17:00",
+      "endHappyHour": "21:00"
+    },
+    {
+      "name": "Tabac Café De La Seine - Bar à jeux Gare de Lyon",
+      "location": {
+        "latitude": 48.84682129999999,
+        "longitude": 2.369197
+      },
+      "prixPinte": 3,
+      "prixPinteHappyHour": null,
+      "startHappyHour": null,
+      "endHappyHour": null
+    },
+    {
+      "name": "H Bar",
+      "location": {
+        "latitude": 48.8553292,
+        "longitude": 2.3920166
+      },
+      "prixPinte": 2.9,
+      "prixPinteHappyHour": null,
+      "startHappyHour": "16:00",
+      "endHappyHour": "02:00"
+    },
+    {
+      "name": "Prost | Bar Caché 404 Not Found",
+      "location": {
+        "latitude": 48.8540538,
+        "longitude": 2.368534
+      },
+      "prixPinte": 8,
+      "prixPinteHappyHour": null,
+      "startHappyHour": null,
+      "endHappyHour": null
+    },
+    {
+      "name": "Le W - Wazemmes",
+      "location": {
+        "latitude": 50.6250633,
+        "longitude": 3.0484247
+      },
+      "prixPinte": 5,
+      "prixPinteHappyHour": 5,
+      "startHappyHour": "17:30",
+      "endHappyHour": "18:30"
+    },
+    {
+      "name": "La Souche",
+      "location": {
+        "latitude": 45.1891259,
+        "longitude": 5.7277983
+      },
+      "prixPinte": 7,
+      "prixPinteHappyHour": 6,
+      "startHappyHour": "17:00",
+      "endHappyHour": "19:00"
+    },
+    {
+      "name": "La Commune",
+      "location": {
+        "latitude": 48.8699394,
+        "longitude": 2.380032
+      },
+      "prixPinte": 3.5,
+      "prixPinteHappyHour": 2.9,
+      "startHappyHour": "17:00",
+      "endHappyHour": "20:00"
+    },
+    {
+      "name": "Fullmoon Lille",
+      "location": {
+        "latitude": 50.6323522,
+        "longitude": 3.0557413
+      },
+      "prixPinte": 6,
+      "prixPinteHappyHour": 5,
+      "startHappyHour": "17:00",
+      "endHappyHour": "20:00"
+    },
+    {
+      "name": "Le Klink",
+      "location": {
+        "latitude": 48.8756364,
+        "longitude": 2.3446223
+      },
+      "prixPinte": 8,
+      "prixPinteHappyHour": 6.5,
+      "startHappyHour": "18:00",
+      "endHappyHour": "22:00"
+    },
+    {
+      "name": "L'Amphi Beaubourg",
+      "location": {
+        "latitude": 48.8616706,
+        "longitude": 2.3509465
+      },
+      "prixPinte": 5,
+      "prixPinteHappyHour": 4,
+      "startHappyHour": "17:00",
+      "endHappyHour": "19:30"
+    },
+    {
+      "name": "Réserve café",
+      "location": {
+        "latitude": 47.2151465,
+        "longitude": -1.5571195
+      },
+      "prixPinte": 7.5,
+      "prixPinteHappyHour": null,
+      "startHappyHour": "17:00",
+      "endHappyHour": "19:00"
+    },
+    {
+      "name": "Maximo Club",
+      "location": {
+        "latitude": 47.2124055,
+        "longitude": -1.5595911
+      },
+      "prixPinte": 8.5,
+      "prixPinteHappyHour": null,
+      "startHappyHour": "17:00",
+      "endHappyHour": "22:00"
+    },
+    {
+      "name": "Le Flaneur",
+      "location": {
+        "latitude": 48.87782199999999,
+        "longitude": 2.3522642
+      },
+      "prixPinte": 5,
+      "prixPinteHappyHour": 5,
+      "startHappyHour": "16:00",
+      "endHappyHour": "00:00"
+    },
+    {
+      "name": "Le Petit Champ",
+      "location": {
+        "latitude": 48.8745554,
+        "longitude": 2.2913176
+      },
+      "prixPinte": 7.5,
+      "prixPinteHappyHour": null,
+      "startHappyHour": "15:00",
+      "endHappyHour": "00:00"
+    },
+    {
+      "name": "Annette K. Seine - Péniche",
+      "location": {
+        "latitude": 48.8434526,
+        "longitude": 2.27386
+      },
+      "prixPinte": 8,
+      "prixPinteHappyHour": 6,
+      "startHappyHour": "18:00",
+      "endHappyHour": "21:00"
+    },
+    {
+      "name": "Envole Moi",
+      "location": {
+        "latitude": 48.8710463,
+        "longitude": 2.3431029
+      },
+      "prixPinte": 6,
+      "prixPinteHappyHour": 5,
+      "startHappyHour": "17:00",
+      "endHappyHour": "19:00"
+    }
+  ]
+}

@@ -1,14 +1,59 @@
 const { Pool } = require("pg");
 
+/**
+ * Use SSL for Supabase and production, unless explicitly disabled.
+ */
+function resolveSsl() {
+  if (process.env.DATABASE_SSL === "false" || process.env.DATABASE_SSL === "0") {
+    return false;
+  }
+  const url = process.env.DATABASE_URL || "";
+  if (url.includes("supabase.co")) {
+    return { rejectUnauthorized: false };
+  }
+  if (process.env.NODE_ENV === "production") {
+    return { rejectUnauthorized: false };
+  }
+  if (process.env.DATABASE_SSL === "true" || process.env.DATABASE_SSL === "1") {
+    return { rejectUnauthorized: false };
+  }
+  return false;
+}
+
+/**
+ * Run in-app CREATE/ALTER when true. Supabase: set false and apply SQL migrations in dashboard.
+ */
+function resolveRunApiDdl() {
+  const explicit = process.env.RUN_API_DDL;
+  if (explicit === "false" || explicit === "0") {
+    return false;
+  }
+  if (explicit === "true" || explicit === "1") {
+    return true;
+  }
+  const url = process.env.DATABASE_URL || "";
+  if (url.includes("supabase.co")) {
+    return false;
+  }
+  return true;
+}
+
 // PostgreSQL adapter that converts ? placeholders to $1, $2, etc.
 class Database {
   constructor() {
+    const connectionString = process.env.DATABASE_URL;
+    if (!connectionString) {
+      console.warn(
+        "⚠️  DATABASE_URL is not set. Set it in .env (see .env.example)."
+      );
+    }
+
+    // No URL: skip DDL and avoid connecting until configured
+    this.runApiDdl = Boolean(connectionString) && resolveRunApiDdl();
+
     this.pool = new Pool({
-      connectionString: process.env.DATABASE_URL,
-      ssl:
-        process.env.NODE_ENV === "production"
-          ? { rejectUnauthorized: false }
-          : false,
+      connectionString,
+      ssl: resolveSsl(),
     });
 
     this.pool.on("connect", () => {
@@ -18,6 +63,12 @@ class Database {
     this.pool.on("error", (err) => {
       console.error("Unexpected error on idle client", err);
     });
+
+    if (!this.runApiDdl) {
+      console.log(
+        "📦 RUN_API_DDL disabled (Supabase or RUN_API_DDL=false). Apply supabase/migrations/001_init.sql if needed."
+      );
+    }
 
     this.initTables();
   }
@@ -30,6 +81,10 @@ class Database {
   }
 
   async initTables() {
+    if (!this.runApiDdl || !process.env.DATABASE_URL) {
+      return;
+    }
+
     const client = await this.pool.connect();
     try {
       // Bars table
