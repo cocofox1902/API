@@ -9,6 +9,7 @@
     "init-db": "node scripts/initDatabase.js",
     "migrate-2fa": "node scripts/migrate2FA.js",
     "seed:bars": "node scripts/seedBarFinal.js",
+    "dedupe:bars": "node scripts/dedupeBarsByNameAndLocation.js",
     "verify:db": "node scripts/verifyDatabase.js"
   },
   "keywords": [

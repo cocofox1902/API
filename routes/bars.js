@@ -10,8 +10,16 @@ function toBarFinalRow(row) {
   const lat = row.latitude != null ? Number(row.latitude) : null;
   const lng = row.longitude != null ? Number(row.longitude) : null;
   const hh = row.happyhourprice;
+  // node-pg : BIGINT souvent string ou BigInt → forcer un nombre JSON pour les clients (ex. iOS)
+  const idRaw = row.id;
+  const idNum =
+    idRaw == null || idRaw === ""
+      ? null
+      : typeof idRaw === "bigint"
+        ? Number(idRaw)
+        : Number.parseInt(String(idRaw), 10);
   return {
-    id: row.id,
+    id: idNum != null && Number.isFinite(idNum) ? idNum : null,
     name: row.name,
     location:
       lat != null && lng != null

@@ -198,6 +198,7 @@ Direct connections with the `postgres` user **bypass RLS**. RLS policies apply t
 | `npm run init-db` | Ensure admin user + minor migrations |
 | `npm run migrate-2fa` | 2FA column migration |
 | `npm run seed:bars` | Import [`bar_final.json`](bar_final.json) |
+| `npm run dedupe:bars` | One-time: delete duplicate bars (same name + coordinates; keeps lowest `id`). `DEDUPE_DRY_RUN=true` to preview |
 
 ---
 
