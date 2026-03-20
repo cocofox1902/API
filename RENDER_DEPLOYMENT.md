@@ -2,6 +2,15 @@
 
 The API uses **PostgreSQL on Supabase**, not Render’s Postgres. Render only runs **Node/Express**.
 
+## Live production
+
+| | |
+|--|--|
+| **URL** | **https://budbeer-api.onrender.com** |
+| **DB** | Supabase (set `DATABASE_URL` on Render) |
+
+More detail: **[PRODUCTION.md](PRODUCTION.md)**
+
 ## Architecture
 
 ```
@@ -100,35 +109,35 @@ CLEAR_BARS_BEFORE_SEED=true npm run seed:bars
 
 ---
 
-## Verify
-
-Replace `YOUR_SERVICE` with your Render hostname, e.g. `budbeer-api.onrender.com`.
+## Verify (production)
 
 ```bash
-curl https://YOUR_SERVICE.onrender.com/api/health
+curl https://budbeer-api.onrender.com/api/health
 ```
 
 ```bash
-curl https://YOUR_SERVICE.onrender.com/api/bars
+curl https://budbeer-api.onrender.com/api/bars
 ```
 
 Expected: `{"bars":[...]}` (maybe empty until you seed or approve bars).
 
 ```bash
-curl -X POST https://YOUR_SERVICE.onrender.com/api/admin/login \
+curl -X POST https://budbeer-api.onrender.com/api/admin/login \
   -H "Content-Type: application/json" \
   -d '{"username":"admin","password":"admin"}'
 ```
+
+Other hostnames: replace `budbeer-api.onrender.com` with your Render URL.
 
 ---
 
 ## Point the admin panel / app
 
-Set the API base URL to:
+Production base URL:
 
-`https://YOUR_SERVICE.onrender.com`
+**`https://budbeer-api.onrender.com/api`**
 
-(Include `/api` in the client only if your frontend expects a path prefix — e.g. `REACT_APP_API_URL=https://....onrender.com/api`.)
+Set `REACT_APP_API_URL` (Admin) or iOS `baseURL` to that value (includes `/api`).
 
 ---
 

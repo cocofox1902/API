@@ -11,6 +11,7 @@ function toBarFinalRow(row) {
   const lng = row.longitude != null ? Number(row.longitude) : null;
   const hh = row.happyhourprice;
   return {
+    id: row.id,
     name: row.name,
     location:
       lat != null && lng != null

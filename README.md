@@ -6,6 +6,8 @@ REST API for bar submissions, admin approval, reports, IP/device banning, and JW
 
 **Deploy the API (free):** **[RENDER_DEPLOYMENT.md](RENDER_DEPLOYMENT.md)** and root [`render.yaml`](../render.yaml) for Render + Supabase.
 
+**Live production URL:** **[PRODUCTION.md](PRODUCTION.md)** (`https://budbeer-api.onrender.com`).
+
 ## Tech stack
 
 - **Node.js** + **Express**
